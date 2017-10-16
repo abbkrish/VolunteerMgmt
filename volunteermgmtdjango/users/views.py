@@ -1,8 +1,13 @@
 from django.core.urlresolvers import reverse
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView
 
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render, redirect, HttpResponseRedirect, render_to_response
 
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db import transaction
+
+from .forms import SubmitForm
 from .models import User
 
 
@@ -43,3 +48,49 @@ class UserListView(LoginRequiredMixin, ListView):
     # These next two lines tell the view to index lookups by username
     slug_field = 'username'
     slug_url_kwarg = 'username'
+
+
+
+## TODO Later : Fix the issue where transaction isnt rolled back on failure
+def signup_view(request):
+    form = SubmitForm()
+    if request.method == 'GET':
+        if request.user.is_authenticated:
+            return redirect('/')
+        else:
+            form = SubmitForm()
+            context = {"nav1": "Login", "form": form}
+            return render(request,'pages/signup.html', context)
+    else:
+        form = SubmitForm(request.POST)
+        context = {"nav1": "Login", "form": form}
+        if form.is_valid():
+
+            new_volunteer = User(first_name = form.cleaned_data['first_name'], 
+                                      last_name = form.cleaned_data['last_name'],
+                                      email = form.cleaned_data['email'], 
+                                      street_address_1 = form.cleaned_data['street_addr_1'], 
+                                      street_address_2 = form.cleaned_data['street_addr_2'],
+                                      zipcode = form.cleaned_data['zipcode'], 
+                                      waiver_filed = form.cleaned_data['waiverfiled'], 
+                                      volunteer_group = form.cleaned_data['volunteergroup'],
+                                      city = form.cleaned_data['city'],
+                                      state = form.cleaned_data['state']
+                                      ) 
+            new_volunteer.set_password(form.cleaned_data['password'])
+            new_volunteer.save()
+
+            #No login needed
+            #request.session['email'] = new_volunteer.email
+            #to indicate sigin in through new registration
+            #request.session['type'] = 'signing up'
+            #user = authenticate(username=form.cleaned_data['email'], password=form.cleaned_data['password'])
+            login(request, user)
+            logout(request)
+            return redirect('/signin/submit')
+
+        else:
+            return render(request,'signup.html', context)
+
+
+

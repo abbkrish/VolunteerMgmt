@@ -1,1 +1,35 @@
-{% extends "base.html" %}
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <h1>Interfaith Food Pantry of the Oranges</h1>
+                            <a href="http://www.orangesfoodpantry.org/about_us" class="btn btn-outline btn-xl page-scroll">Learn More</a>
+
+                            {% if not signed_in %}
+
+                                <a href="/users/signup" class = "btn btn-outline btn-xl page-scroll">Sign up</a>
+
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+        <div class = "col-sm-5">
+        	{% load static %}
+
+            <img src="{% static "images/device.png" %}" height = "520" width = "680" clas = "img-fluid" style = "position:relative; top: 70px; right: 40px;">
+            <link href="{% static 'css/home.css' %}" rel="stylesheet">
+	    </div>
+
+    </header>
+
+
+{% endblock %}

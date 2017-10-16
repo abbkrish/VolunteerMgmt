@@ -48,7 +48,8 @@ THIRD_PARTY_APPS = [
     'crispy_forms',  # Form layouts
     'allauth',  # registration
     'allauth.account',  # registration
-    'allauth.socialaccount',  # registration
+    'allauth.socialaccount', 
+    # registration
 ]
 
 # Apps specific for this project go here.
@@ -57,6 +58,12 @@ LOCAL_APPS = [
     'volunteermgmtdjango.users.apps.UsersConfig',
     # Your stuff: custom apps go here
     'custom_user',
+    'widget_tweaks',
+    'volunteer',
+    'home',
+    'signin',
+    'django_tables2',
+    'django_filters'
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -169,6 +176,7 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
                 # Your stuff: custom template context processors go here
+                'django.template.context_processors.request',
             ],
         },
     },

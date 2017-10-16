@@ -1,0 +1,265 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% load static %}
+
+
+{% load i18n widget_tweaks %}
+
+
+<head> 
+
+	    <link href="{% static "css/signup.css" %}" rel="stylesheet">
+
+</head>
+   
+
+  
+
+
+
+<header>
+
+
+		<div class="container" id = "form-signup">
+			<div class="row main">
+				<div class="main-login main-center">
+				<h4 style = "text-align:center">Sign up</h4>
+				<div style = "visibility:hidden;">########################################</div>
+					<form class="" method="POST" action="submit/" style="">
+						{% csrf_token %}
+						<!-- First Name -->
+						<div class="form-group col-xs-4 has-error">
+							<label for="fname" class="cols-sm-2 control-label">First Name</label>
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									{{form.first_name|attr:"class:form-control"}}
+								</div>
+								{% if form.first_name.errors %}
+            						{% for error in form.first_name.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+							</div>
+						</div>
+
+						<!-- Last Name -->
+						<div class="form-group col-xs-4 has-error">
+							<label for="lname" class="cols-sm-2 control-label">Last Name</label>
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									{{form.last_name|attr:"class:form-control"}}
+								</div>
+								{% if form.last_name.errors %}
+            						{% for error in form.last_name.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+							</div>
+						</div>
+
+
+						<!-- Street Addr 1-->
+						<div class="form-group col-xs-4 has-error">
+							<label for="addr" class="cols-sm-2 control-label">Street Address 1</label>
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-drivers-license fa" aria-hidden="true"></i></span>
+									{{form.street_addr_1|attr:"class:form-control"}}
+								</div>
+								{% if form.street_addr_1.errors %}
+            						{% for error in form.street_addr_1.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+							</div>
+						</div>
+
+
+						<!-- Street Addr2 -->
+						<div class="form-group col-xs-4 has-error">
+							<label for="addr2" class="cols-sm-2 control-label">Street Address 2</label>
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-drivers-license fa" aria-hidden="true"></i></span>
+									{{form.street_addr_2|attr:"class:form-control"}}
+								</div>
+								{% if form.street_addr_2.errors %}
+            						{% for error in form.street_addr_2.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+							</div>
+						</div>
+
+
+						<!-- City --> 
+						<div class="form-group col-xs-4 has-error">
+							<label for="city" class="cols-sm-2 control-label">City</label>
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-drivers-license fa" aria-hidden="true"></i></span>
+									{{form.city|attr:"class:form-control"}}
+								</div>
+								{% if form.city.errors %}
+            						{% for error in form.city.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+							</div>
+						</div>
+
+
+
+
+						<!-- State -->
+						<div class="form-group col-xs-4 has-error">
+							<label for="state" class="cols-sm-2 control-label">State</label>
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-drivers-license fa" aria-hidden="true"></i></span>
+									{{form.state|attr:"class:form-control"}}
+								</div>
+								{% if form.state.errors %}
+            						{% for error in form.state.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+							</div>
+						</div>	
+
+
+
+	
+
+
+
+						<!-- Zipcode -->
+						<div class="form-group col-xs-4 has-error">
+							<label for="zipcode" class="cols-sm-2 control-label">Zipcode</label>
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-drivers-license fa" aria-hidden="true"></i></span>
+									{{form.zipcode|attr:"class:form-control"}}
+								</div>
+								{% if form.zipcode.errors %}
+            						{% for error in form.zipcode.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+							</div>
+						</div>
+
+						
+
+						
+
+						<!-- Waiver Filed -->
+						<div class="form-group col-xs-4 has-error">
+							  <label for="waiver" class="cols-sm-2 control-label">Waiver Filed</label>
+							  <div class="cols-md-5">
+							 	{{form.waiverfiled|attr:"class:form-control"}}
+							  </div>
+							  {% if form.waiverfiled.errors %}
+            						{% for error in form.waiverfiled.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+						</div>
+
+
+						<!-- Voluntteer Group -->
+						<div class="form-group col-xs-4 has-error">
+							<label for="volunteergroup" class="cols-sm-2 control-label">Volunteer Group/Affiliation</label>
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+									{{form.volunteergroup|attr:"class:form-control"}}
+								</div>
+								{% if form.volunteergroup.errors %}
+            						{% for error in form.volunteergroup.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+							</div>
+						</div>
+
+
+						<!-- Email -->
+						<div class="form-group has-error">
+							<label for="email" class="cols-sm-2 control-label">Email</label>
+							
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									{{form.email|attr:"class:form-control"}}
+								</div>
+							{% if form.email.errors %}
+            						{% for error in form.email.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          					{% endif %}
+							</div>
+						</div>
+
+						
+						<!-- Password -->
+						<div class="form-group has-error">
+							<label for="password" class="cols-sm-2 control-label">Password</label>
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									{{form.password|attr:"class:form-control"}}
+								</div>
+								{% if form.password.errors %}
+            						{% for error in form.password.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+							</div>
+						</div>
+
+						<!-- Confirm Password -->
+						<div class="form-group has-error">
+							<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									{{form.confirm_password|attr:"class:form-control"}}
+								</div>
+								{% if form.confirm_password.errors %}
+            						{% for error in form.confirm_password.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+							</div>
+						</div>
+
+
+						
+						<!-- Register Button -->
+						<div class="form-group ">
+							<input type = "submit" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button"/>
+						</div>
+
+
+						<!-- Confirm agreement -->
+						<div class="form-group has-error">
+							<div class="cols-md-5">
+									<p style = "font-size:12px; color: Burlywood;"> By clicking the Submit button, you agree to the terms and conditions listed in the <a href = "{{STATIC_URL}}Release and Waiver.docx" style = "color:aliceblue;">Waiver Document</a> </p>
+							</div>
+						</div>
+
+						
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+
+</header>
+{% endblock %}

@@ -6,9 +6,15 @@ body, html{
 	background-size: cover;
 }
 
-table{
+
+.my_table{
 
 	background-color: #eff2e1;
 	border: 1px solid black;
 	color: black;
+	border-radius: 5px;
+    width: 70%;
+  	margin-top: 100px;
+  	margin-left:200px;
+  	float: none;
 }

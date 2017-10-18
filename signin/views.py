@@ -10,6 +10,9 @@ from django_tables2 import SingleTableView
 from django.shortcuts import render, redirect, HttpResponseRedirect, render_to_response, HttpResponse
 from django.core import serializers
 from .models import UserTable
+from django.utils.html import mark_safe
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_protect
 
 from django_filters.views import FilterView
 from .filters import UserFilter
@@ -27,7 +30,7 @@ def signInView(request):
 	#RequestConfig(request).configure(table)
 	#json = json.dumps(data)
 	#json = serializers.serialize('json', data)
-	context = {'user_data': json.dumps(data),
+	context = {'user_data': mark_safe(json.dumps(data)),
                }
 	return render(request,'pages/signin.html', context)
 	#return render(request,'pages/signin.html', {'table':table})
@@ -71,13 +74,23 @@ class SignInView(TemplateView):
 		return context
 '''
 
-
 class PostSignIn(TemplateView):
 
-	template_name = 'pages/signed_up.html'
 
+	
+	template_name = 'pages/signed_in_user.html'
+	def get(self, *args, **kwargs):
+		context = {}
+		return render(self.request,'pages/signed_in_user.html', context)
 	def get_context_data(self,*args,**kwargs):
 		context = super(SignInView, self).get_context_data(**kwargs)
 		volunteer = Volunteer.objects.get(email= request.session['email'])
 		context = {'vname': volunteer.first_name + ' ' + volunteer.last_name, 'type': self.request.session['type'], 'nav2': 'home'}
 		return context
+
+	def post(self, *args, **kwargs):
+		context = {}
+		print(self.request.POST)
+		#return render(self.request,'pages/home.html', context)
+		#redirect('home/')
+		return HttpResponseRedirect('/home')

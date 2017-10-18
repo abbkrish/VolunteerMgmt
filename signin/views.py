@@ -10,6 +10,7 @@ from django_tables2 import SingleTableView
 from django.shortcuts import render, redirect, HttpResponseRedirect, render_to_response, HttpResponse
 from django.core import serializers
 from .models import UserTable
+from .models import SignedInUsers
 from django.utils.html import mark_safe
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_protect
@@ -91,6 +92,13 @@ class PostSignIn(TemplateView):
 	def post(self, *args, **kwargs):
 		context = {}
 		print(self.request.POST)
+		email_key = self.request.POST['data[email]']
+
+		#Add to Sign In Logs
+		user = User.objects.get(email=email_key)
+		signin_instance = SignedInUsers.objects.create(User = user)
+
+		print(user.first_name, signin_instance)
 		#return render(self.request,'pages/home.html', context)
 		#redirect('home/')
 		return HttpResponseRedirect('/home')

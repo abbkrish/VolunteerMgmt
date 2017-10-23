@@ -1,12 +1,3 @@
-body, html{
-     height: 100%;
- 	background-repeat: no-repeat;
- 	background:url(https://i.ytimg.com/vi/4kfXjatgeEU/maxresdefault.jpg);
- 	font-family: 'Oxygen', sans-serif;
-	background-size: cover;
-}
-
-
 
 body {
   font-family: 'Muli', 'Helvetica', 'Arial', 'sans-serif'; }
@@ -353,3 +344,9 @@ img::-moz-selection {
 
 body {
   webkit-tap-highlight-color: #222222; }
+
+
+.note{
+
+	margin-top: 50px;
+}

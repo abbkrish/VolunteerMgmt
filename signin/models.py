@@ -26,3 +26,6 @@ class UserTable(tables.Table):
 class SignedInUsers(models.Model):
 	User = models.ForeignKey(User, on_delete = models.CASCADE)
 	loggedin_ts = models.DateTimeField(auto_now_add=True)
+	date = models.DateField(auto_now_add=True)
+	created = models.DateTimeField(auto_now_add=True)
+	modified = models.DateTimeField(auto_now=True)

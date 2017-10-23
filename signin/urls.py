@@ -9,7 +9,7 @@ url(
 		r'^submit/',PostSignIn.as_view(), name='submit'
 		),
 url(
-        r'^$',signInView, name = 'my-ajax-url'#SignInView.as_view()
+        r'^$',signInView, name = 'signin'#SignInView.as_view()
         ),
 
 ]

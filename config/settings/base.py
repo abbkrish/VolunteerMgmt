@@ -62,6 +62,7 @@ LOCAL_APPS = [
     'volunteer',
     'home',
     'signin',
+    'staff',
     'django_tables2',
     'django_filters'
 ]

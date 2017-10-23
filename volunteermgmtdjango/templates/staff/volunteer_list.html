@@ -21,8 +21,8 @@
 
 <header>
 
-<link href="{% static 'css/signin.css' %}" rel="stylesheet">
-<script src="{% static 'js/sigin.js' %}"></script>
+<link href="{% static 'css/volunteer_list.css' %}" rel="stylesheet">
+<script src="{% static 'js/volunteer_list.js' %}"></script>
 <script type="text/javascript" language="javascript" class="init">
      $(document).ready(function() {
         var json=JSON.stringify({{user_data}});
@@ -31,15 +31,22 @@
          var table = $('#example').DataTable( {
              "data":JSON.parse(json),
              "dom":"Bfrtip",
+             "columnDefs": [{
+            
+              "targets": 0,
+              'checkboxes': {
+            'selectRow': true
+         }
+            }],
              "columns": [
-                    {"data": null, "defaultContent": "", "className": "select-checkbox", "orderable": false},
-                    {"data":"first_name", "title": "First Name"},
-                    {"data":"last_name", "title": "Last Name"},
-                    {"data":"email", "title":"Email"},
-                    {"data":"waiver_filed", "title":"Waiver Filed"},
-                    {"data":"volunteer_group", "title":"Volunteer Group"}
+                    {"data": null, "orderable": false},
+                    {"data":"User__first_name", "title": "First Name"},
+                    {"data":"User__last_name", "title": "Last Name"},
+                    {"data":"User__email", "title":"Email"},
+                    {"data":"date", "title": "Date Attended", "format": 'D MMM YYYY',},
+                    {"data":"User__volunteer_group", "title":"Volunteer Group"}
                  ],
-              "select": {"style": "os", "selector": "td:first-child" },
+              "select": {"style": "multi"},
               //"select":true,
               //"buttons": [
                 /*{ 
@@ -54,7 +61,7 @@
      },*/ 
      "buttons": [
      {
-            "extend": 'selectedSingle',
+            "extend": 'selected',
             "text": 'Sign in Selected User',
             /*"fnClick": function(e, dt, button, config){
               
@@ -64,24 +71,31 @@
 
             },*/
            action: function ( e, dt, button, config ) {
-                console.log( dt.row( { selected: true } ).data() );
+                console.log( dt.rows( { selected: true } ).data() );
                 //console.log((button).submit());
                 //$(button).submit();
                 //$.redirect('/');
+                var jdata = dt.rows( { selected: true } ).data().toArray()
+                var json = JSON.stringify(jdata) 
                 $.ajax({
-                url: "{% url 'signin:submit' %}",
+                url: "{% url 'staff:volunteer_list' %}",
                 type: 'POST',
-                data: { data:dt.row( { selected: true } ).data(),
+                data: { data: json,
                 csrfmiddlewaretoken: '{{ csrf_token }}'
               },
-                success: function (result) {
-                  //window.location.href = "/signin/submit"
+
+                dataType: 'json',
+               success: function (result) {
+                  
+                  console.log("success")
                   
                 }
             });
-            window.location.href = "{% url 'signin:submit' %}";
+            window.location.href = "{%url 'staff:email' %}"
             },
+
         }
+
         ]
 
    }
@@ -90,13 +104,33 @@
 
 
 
-
     });
+
 
 
  </script>
 
+
+
+
 <div id = 'my_table'>
+
+  <div class="container" id="date-picker">
+
+    <div class="col-md-4 pull-right">
+      Date Picker
+      <div class="input-group input-daterange">
+
+        <input type="text" id="min-date" class="form-control date-range-filter" data-date-format="yyyy-mm-dd" placeholder="From:">
+
+        <div class="input-group-addon">to</div>
+
+        <input type="text" id="max-date" class="form-control date-range-filter" data-date-format="yyyy-mm-dd" placeholder="To:">
+
+      </div>
+    </div>
+  </div>
+
  <table class="table table-striped table-bordered" cellpadding="0" cellspacing="0" border="0" width="100%" id="example">
     {% csrf_token %}
      <tbody></tbody>

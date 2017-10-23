@@ -18,8 +18,8 @@ class SubmitForm(forms.Form):
 	zipcode = forms.CharField(label='zipcode', max_length = 100, widget=forms.TextInput(attrs={'placeholder': '5 digit zipcode'}))
 	waiverfiled = forms.BooleanField(label='waiver', required=False)
 	volunteergroup = forms.CharField(label='volunteergroup', max_length = 500, widget=forms.TextInput(attrs={'placeholder': 'Eg: First Year Medical Student'}))
-	password = forms.CharField(label='pwd', max_length = 300, widget=forms.PasswordInput(attrs={'placeholder': 'Enter your Password'}))
-	confirm_password = forms.CharField(label = "c_pwd", max_length = 300, widget=forms.PasswordInput(attrs={'placeholder': 'Confirm your Password'}))
+	#password = forms.CharField(label='pwd', max_length = 300, widget=forms.PasswordInput(attrs={'placeholder': 'Enter your Password'}), initial = 'NULL')
+	#confirm_password = forms.CharField(label = "c_pwd", max_length = 300, widget=forms.PasswordInput(attrs={'placeholder': 'Confirm your Password'}), initial='NULL')
 
 
 

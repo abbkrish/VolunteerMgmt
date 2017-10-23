@@ -23,7 +23,7 @@ from .filters import UserFilter
 
 
 def signInView(request):
-	queryset = User.objects.filter(is_staff=False)
+	queryset = User.objects.filter(is_staff=False, is_active=True)
 	values = queryset.values('first_name', 'last_name', 'email', 'waiver_filed', 'volunteer_group')
 	data = list(values)
 	table = UserTable(values)
@@ -81,8 +81,13 @@ class PostSignIn(TemplateView):
 	
 	template_name = 'pages/signed_in_user.html'
 	def get(self, *args, **kwargs):
-		context = {}
+		signin_instance = SignedInUsers.objects.order_by('-loggedin_ts')[0]
+		#context = {'type':'signing up', 'vname':self.request.session['first_name'] + ' ' + self.request.session['last_name']}
+		context = {'type':'signing up', 'vname':signin_instance.User.first_name + ' ' + signin_instance.User.last_name}
+
+		self.request.session.flush()
 		return render(self.request,'pages/signed_in_user.html', context)
+
 	def get_context_data(self,*args,**kwargs):
 		context = super(SignInView, self).get_context_data(**kwargs)
 		volunteer = Volunteer.objects.get(email= request.session['email'])
@@ -91,8 +96,9 @@ class PostSignIn(TemplateView):
 
 	def post(self, *args, **kwargs):
 		context = {}
-		print(self.request.POST)
 		email_key = self.request.POST['data[email]']
+		self.request.session['first_name'] = self.request.POST['data[first_name]']
+		self.request.session['last_name'] = self.request.POST['data[last_name]']
 
 		#Add to Sign In Logs
 		user = User.objects.get(email=email_key)

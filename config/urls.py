@@ -19,7 +19,8 @@ urlpatterns = [
     url(r'^', include('home.urls', namespace='home')),
     url(r'^home/',include('home.urls', namespace='home')),
     url(r'^about/', TemplateView.as_view(template_name='pages/about.html'), name='about'),
-    url(r'^signin/',include('signin.urls', namespace='signin'))
+    url(r'^signin/',include('signin.urls', namespace='signin')),
+    url(r'^staff/', include('staff.urls', namespace='staff'))
     #url(r'^signup/$',TemplateView.as_view(template_name='pages/signup.html'), name='signup'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

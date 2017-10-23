@@ -11,11 +11,14 @@
                     <div class="header-content">
                         <div class="header-content-inner">
                             <h1>Interfaith Food Pantry of the Oranges</h1>
-                            <a href="http://www.orangesfoodpantry.org/about_us" class="btn btn-outline btn-xl page-scroll">Learn More</a>
+                            
+                            <!--<a href="http://www.orangesfoodpantry.org/about_us" class="btn btn-outline btn-xl page-scroll">Learn More</a>-->
 
                             {% if not signed_in %}
 
-                                <a href="/users/signup" class = "btn btn-outline btn-xl page-scroll">Sign up</a>
+                                <a href="{% url 'signin:signin' %}" class = "btn btn-outline btn-xl page-scroll">Volunteer Sign In</a>
+
+                                <a href="{% url 'users:signup' %}" class = "btn btn-outline btn-xl page-scroll">Volunteer Sign up</a>
 
                             {% endif %}
                         </div>

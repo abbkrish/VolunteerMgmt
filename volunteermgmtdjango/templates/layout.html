@@ -31,6 +31,7 @@
     <link href="https://cdn.datatables.net/select/1.2.3/css/select.dataTables.min.css" rel="stylesheet">
     <!--<link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet">-->
     <link href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.min.css" rel="stylesheet">
+    <link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.9/css/dataTables.checkboxes.css" rel="stylesheet" />
     <!--<link href="https://editor.datatables.net/extensions/Editor/css/editor.dataTables.min.css" rel="stylesheet">-->
     {% endcompress %}
     {% endblock %}
@@ -80,6 +81,7 @@
     <script src="https://cdn.datatables.net/select/1.2.3/js/dataTables.select.min.js"></script>
     <!--<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>-->
     <script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.9/js/dataTables.checkboxes.min.js"></script>
     <!--<script src="https://editor.datatables.net/extensions/Editor/js/dataTables.editor.min.js"></script>-->
 
 
@@ -110,6 +112,16 @@
                      <li class="nav-item">
                         <a class="nav-link page-scroll" href="/{{nav2_href|lower}}">{{nav2}}</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="{% url 'staff:login' %}">{{staff}}</a>
+                    </li>
+                    {% if staff_signed_in %}
+                    
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="{% url 'staff:logout' %}">{{staff_logout}}</a>
+                        </li>
+
+                    {% endif %}
 
                     <li class="nav-item">
                         <a class="nav-link page-scroll" href="http://www.orangesfoodpantry.org/about_us">About</a>

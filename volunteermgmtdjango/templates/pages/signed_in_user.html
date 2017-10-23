@@ -1,7 +1,24 @@
 {% extends "layout.html" %}
-{% block content %} 
+
+{% block content %}
+
+{% load static %}
+
+
+{% load i18n widget_tweaks %}
+
+
+<head> 
+
+		<meta http-equiv="refresh" content="5;url={% url 'home:home_view' %}">
+	    <link href="{% static "css/signed_in.css" %}" rel="stylesheet">
+		
+		
+</head>
+   
 
 <header>
+<div class="note" style="width:800px; margin:0 auto">
 	 <div class="container">
             <div class="row">
                 <div class="col-sm-7">
@@ -12,7 +29,6 @@
                         </div>
                     </div>
        </div>
+</div>
 </header>
-
-
 {% endblock %}

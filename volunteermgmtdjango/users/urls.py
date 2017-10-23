@@ -4,7 +4,7 @@ from . import views
 from .views import signup_view
 
 urlpatterns = [
-    url(r'^signup/', signup_view),
+    url(r'^signup/', signup_view, name='signup'),
     
     url(
         regex=r'^$',

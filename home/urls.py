@@ -7,6 +7,6 @@ urlpatterns = [
 
 
 url(
-        r'^$',HomePageView.as_view()
+        r'^$',HomePageView.as_view(), name='home_view'
         ),
 ]

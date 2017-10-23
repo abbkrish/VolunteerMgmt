@@ -1,5 +1,20 @@
 {% extends "layout.html" %}
-{% block content %} 
+
+{% block content %}
+
+{% load static %}
+
+
+{% load i18n widget_tweaks %}
+
+
+<head> 
+
+		<meta http-equiv="refresh" content="5;url={% url 'home:home_view' %}">
+	    <link href="{% static "css/signed_in.css" %}" rel="stylesheet">
+		
+		
+</head>
 
 <header>
 	 <div class="container">
@@ -16,3 +31,5 @@
 
 
 {% endblock %}
+
+

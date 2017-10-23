@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% load static %}
+
+
+{% load i18n widget_tweaks %}
+
+
+<head> 
+
+	    <link href="{% static "css/staff_email.css" %}" rel="stylesheet">
+
+</head>
+   
+<header>
+
+
+		<div class="container" id = "form-signup">
+			<div class="row main">
+				<div class="main-login main-center">
+				<h4 style = "text-align:center">Send Email</h4>
+				<div style = "visibility:hidden;">########################################</div>
+					<form class="" method="POST" action="{%url 'staff:email' %}" style="">
+						
+
+						{% csrf_token %}
+						
+
+
+						<!-- Sender -->
+						<div class="form-group has-error">
+							<label for="email" class="cols-sm-2 control-label">Sender</label>
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									{{form.sender|attr:"class:form-control"}}
+								</div>
+							</div>
+							{% if form.sender.errors %}
+            						{% for error in form.sender.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+						</div>
+
+
+						<!-- Recipients -->
+						<div class="form-group has-error">
+							<label for="email" class="cols-sm-2 control-label">Recipients</label>
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									{{form.recipients|attr:"class:form-control"}}
+								</div>
+							</div>
+							{% if form.recipients.errors %}
+            						{% for error in form.recipients.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+						</div>
+
+						<!-- Content -->
+						<div class="form-group has-error">
+							<label for="email" class="cols-sm-2 control-label">Message</label>
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									{{form.message|attr:"class:form-control"}}
+								</div>
+							</div>
+							 {% if form.message.errors %}
+            						{% for error in form.message.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+						</div>
+
+
+						<!-- CC Myself -->
+						<div class="form-group col-xs-4 has-error">
+							  <label for="waiver" class="cols-sm-2 control-label">CC Myself</label>
+							  <div class="cols-md-5">
+							 	{{form.cc_myself|attr:"class:form-control"}}
+							  </div>
+							  {% if form.cc_myself.errors %}
+            						{% for error in form.cc_myself.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+						</div>
+
+
+						
+
+
+						<!-- Submit Button -->
+						<div class="form-group ">
+							<input type = "submit" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button"/>
+						</div>
+
+
+					
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+
+</header>
+
+
+
+{% endblock %}

@@ -43,6 +43,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractUser):
     """User model."""
+    """ Deleting the user - just set the is_active to False"""
 
     username = None
     first_name = models.CharField(max_length=200, default = 'NULL')
@@ -57,6 +58,7 @@ class User(AbstractUser):
     volunteer_group = models.CharField(max_length=200, default = 'NULL')
     password = models.CharField(max_length=200, default = 'NULL')
     created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
 

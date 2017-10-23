@@ -10,7 +10,7 @@
 
 <head> 
 
-	    <link href="{% static "css/signup.css" %}" rel="stylesheet">
+	    <link href="{% static 'css/signup.css' %}" rel="stylesheet">
 
 </head>
    
@@ -19,7 +19,7 @@
 
 
 
-<header>
+<header id='mysignup'>
 
 
 		<div class="container" id = "form-signup">
@@ -58,6 +58,24 @@
               							<p class="error-message">{{ error }}</p>
             						{% endfor %}
           						{% endif %}
+							</div>
+						</div>
+
+
+						<!-- Email -->
+						<div class="form-group has-error">
+							<label for="email" class="cols-sm-2 control-label">Email</label>
+							
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									{{form.email|attr:"class:form-control"}}
+								</div>
+							{% if form.email.errors %}
+            						{% for error in form.email.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          					{% endif %}
 							</div>
 						</div>
 
@@ -188,24 +206,11 @@
 						</div>
 
 
-						<!-- Email -->
-						<div class="form-group has-error">
-							<label for="email" class="cols-sm-2 control-label">Email</label>
-							
-							<div class="cols-md-5">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									{{form.email|attr:"class:form-control"}}
-								</div>
-							{% if form.email.errors %}
-            						{% for error in form.email.errors %}
-              							<p class="error-message">{{ error }}</p>
-            						{% endfor %}
-          					{% endif %}
-							</div>
-						</div>
+						
 
 						
+
+						{% comment %}
 						<!-- Password -->
 						<div class="form-group has-error">
 							<label for="password" class="cols-sm-2 control-label">Password</label>
@@ -237,7 +242,7 @@
           						{% endif %}
 							</div>
 						</div>
-
+						{% endcomment %}
 
 						
 						<!-- Register Button -->

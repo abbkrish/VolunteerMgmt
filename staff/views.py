@@ -80,6 +80,9 @@ def email_view(request):
             context = {"form": form, "staff_signed_in": True, "staff_logout": "Staff Logout"}
             return render(request, 'staff/send_email.html', context)
 
+    elif request.method == 'POST' and request.user.is_authenticated:
+        pass
+    
     return render(request, reverse('staff:email'), {})
     pass
 

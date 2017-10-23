@@ -3,7 +3,6 @@ amqp==1.4.9
 anyjson==0.3.3
 appnope==0.1.0
 argon2-cffi==16.3.0
-boto==2.48.0
 awesome-slugify==1.6.5
 Babel==2.4.0
 billiard==3.3.0.23
@@ -25,6 +24,7 @@ django-custom-user==0.7
 django-debug-toolbar==1.8
 django-environ==0.4.3
 django-extensions==1.7.9
+django-filter==1.0.4
 django-model-utils==3.0.0
 django-redis==4.8.0
 django-tables2==1.11.0
@@ -33,6 +33,7 @@ django-widget-tweaks==1.4.1
 docutils==0.13.1
 factory-boy==2.8.1
 Faker==0.7.17
+heroku==0.1.4
 idna==2.5
 imagesize==0.7.1
 ipdb==0.10.3
@@ -56,7 +57,7 @@ Pygments==2.2.0
 pytest==3.1.2
 pytest-django==3.1.2
 pytest-sugar==0.8.0
-python-dateutil==2.6.0
+python-dateutil==1.5
 python3-openid==3.1.0
 pytz==2017.2
 rcssmin==1.0.6

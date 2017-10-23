@@ -55,7 +55,7 @@ django-compressor==2.1.1
 
 # Your custom requirements go here
 
-django-custom-user
-django-widget-tweaks
-django-tables2
-django-filter
+django-custom-user==0.7
+django-widget-tweaks==1.4.1
+django-tables2==1.11.0
+django-filter==1.0.4

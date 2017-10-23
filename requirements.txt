@@ -27,6 +27,7 @@ django-environ==0.4.3
 django-extensions==1.7.9
 django-model-utils==3.0.0
 django-redis==4.8.0
+django-tables2==1.11.0
 django-test-plus==1.0.17
 django-widget-tweaks==1.4.1
 docutils==0.13.1

@@ -85,6 +85,7 @@ INSTALLED_APPS += ['gunicorn', ]
 # Uploaded Media Files
 # ------------------------
 # See: http://django-storages.readthedocs.io/en/latest/index.html
+'''
 INSTALLED_APPS += ['storages', ]
 
 AWS_ACCESS_KEY_ID = env('DJANGO_AWS_ACCESS_KEY_ID')
@@ -104,7 +105,7 @@ control = 'max-age=%d, s-maxage=%d, must-revalidate' % (AWS_EXPIRY, AWS_EXPIRY)
 AWS_HEADERS = {
     'Cache-Control': bytes(control, encoding='latin-1')
 }
-
+'''
 # URL that handles the media served from MEDIA_ROOT, used for managing
 # stored files.
 MEDIA_URL = 'https://s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
@@ -126,6 +127,7 @@ DEFAULT_FROM_EMAIL = env('DJANGO_DEFAULT_FROM_EMAIL',
 EMAIL_SUBJECT_PREFIX = env('DJANGO_EMAIL_SUBJECT_PREFIX', default='[VolunteerMgmtDjango]')
 SERVER_EMAIL = env('DJANGO_SERVER_EMAIL', default=DEFAULT_FROM_EMAIL)
 
+'''
 # Anymail with Mailgun
 INSTALLED_APPS += ['anymail', ]
 ANYMAIL = {
@@ -133,7 +135,7 @@ ANYMAIL = {
     'MAILGUN_SENDER_DOMAIN': env('MAILGUN_SENDER_DOMAIN')
 }
 EMAIL_BACKEND = 'anymail.backends.mailgun.MailgunBackend'
-
+'''
 # TEMPLATE CONFIGURATION
 # ------------------------------------------------------------------------------
 # See:

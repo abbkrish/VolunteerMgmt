@@ -114,7 +114,7 @@ AWS_HEADERS = {
 #temporary
 
 MEDIA_ROOT = str(APPS_DIR('media'))
-MEDIA_URL = '/media'
+MEDIA_URL = '/media/'
 
 
 #MEDIA_URL = 'https://s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME

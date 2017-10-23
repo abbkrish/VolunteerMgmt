@@ -19,6 +19,9 @@ import logging
 
 from .base import *  # noqa
 
+
+APPS_DIR = ROOT_DIR.path('volunteermgmtdjango')
+
 # SECRET CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
@@ -108,7 +111,13 @@ AWS_HEADERS = {
 '''
 # URL that handles the media served from MEDIA_ROOT, used for managing
 # stored files.
-MEDIA_URL = 'https://s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
+#temporary
+
+MEDIA_ROOT = str(APPS_DIR('media'))
+MEDIA_URL = '/media'
+
+
+#MEDIA_URL = 'https://s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
 
 
 # Static Assets

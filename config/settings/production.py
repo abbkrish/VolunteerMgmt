@@ -119,6 +119,7 @@ AWS_HEADERS = {
 MEDIA_ROOT = str(APPS_DIR('media'))
 MEDIA_URL = '/media/'
 
+print("passed herer")
 
 #MEDIA_URL = 'https://s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
 
@@ -244,6 +245,9 @@ RAVEN_CONFIG = {
     'DSN': SENTRY_DSN
 }
 '''
+
+print("passed herer")
+
 # Custom Admin URL, use {% url 'admin:index' %}
 ADMIN_URL = env('DJANGO_ADMIN_URL')
 

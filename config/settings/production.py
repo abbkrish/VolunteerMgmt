@@ -31,6 +31,12 @@ EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
 ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['.herokuapp.com', ])
 
 
+# COMPRESSOR
+# ------------------------------------------------------------------------------
+COMPRESS_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+COMPRESS_URL = STATIC_URL
+COMPRESS_ENABLED = env.bool('COMPRESS_ENABLED', default=True)
+
 DATABASES['default'] = env.db("DATABASE_URL")
 # CACHING
 # ------------------------------------------------------------------------------

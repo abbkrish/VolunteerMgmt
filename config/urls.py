@@ -8,19 +8,20 @@ from django.views import defaults as default_views
 urlpatterns = [
     
 
+    # Your stuff: custom urls includes go here
+    url(r'^$', include('home.urls', namespace='home')),
+    url(r'^home/',include('home.urls', namespace='home')),
+    url(r'^about/', TemplateView.as_view(template_name='pages/about.html'), name='about'),
+    url(r'^signin/',include('signin.urls', namespace='signin')),
+    url(r'^staff/', include('staff.urls', namespace='staff')),
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, admin.site.urls),
 
     # User management
     url(r'^users/', include('volunteermgmtdjango.users.urls', namespace='users')),
-    url(r'^accounts/', include('allauth.urls')),
+    url(r'^accounts/', include('allauth.urls'))
 
-    # Your stuff: custom urls includes go here
-    url(r'^', include('home.urls', namespace='home')),
-    url(r'^home/',include('home.urls', namespace='home')),
-    url(r'^about/', TemplateView.as_view(template_name='pages/about.html'), name='about'),
-    url(r'^signin/',include('signin.urls', namespace='signin')),
-    url(r'^staff/', include('staff.urls', namespace='staff'))
+    
     #url(r'^signup/$',TemplateView.as_view(template_name='pages/signup.html'), name='signup'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

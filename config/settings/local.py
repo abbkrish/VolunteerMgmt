@@ -21,7 +21,7 @@ TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 # Note: This key only used for development and testing.
 SECRET_KEY = env('DJANGO_SECRET_KEY', default='#nEZ[FOs*1xeU*&23T2!s%{^3v~[54F+&qCyNO1${{xn.hiM[3')
-'''
+
 # Mail settings
 # ------------------------------------------------------------------------------
 
@@ -38,7 +38,11 @@ CACHES = {
         'LOCATION': ''
     }
 }
-'''
+
+
+
+ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['.herokuapp.com', ])
+
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
 MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]

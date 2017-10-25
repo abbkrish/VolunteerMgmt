@@ -135,10 +135,8 @@ COMPRESS_ENABLED = env.bool('COMPRESS_ENABLED', default=True)
 
 
 
-EMAIL_PORT = 1025
 
-EMAIL_HOST = env('EMAIL_HOST', default='mailhog')
-'''
+
 # EMAIL
 # ------------------------------------------------------------------------------
 DEFAULT_FROM_EMAIL = env('DJANGO_DEFAULT_FROM_EMAIL',
@@ -153,7 +151,7 @@ ANYMAIL = {
     'MAILGUN_SENDER_DOMAIN': env('MAILGUN_SENDER_DOMAIN')
 }
 EMAIL_BACKEND = 'anymail.backends.mailgun.MailgunBackend'
-'''
+
 # TEMPLATE CONFIGURATION
 # ------------------------------------------------------------------------------
 # See:

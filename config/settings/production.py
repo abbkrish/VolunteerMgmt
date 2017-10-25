@@ -133,6 +133,11 @@ COMPRESS_URL = STATIC_URL
 COMPRESS_ENABLED = env.bool('COMPRESS_ENABLED', default=True)
 '''
 
+
+
+EMAIL_PORT = 1025
+
+EMAIL_HOST = env('EMAIL_HOST', default='mailhog')
 '''
 # EMAIL
 # ------------------------------------------------------------------------------

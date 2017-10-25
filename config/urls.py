@@ -9,7 +9,7 @@ urlpatterns = [
     
 
     # Your stuff: custom urls includes go here
-    url(r'^$', include('home.urls', namespace='home')),
+    url(r'^', include('home.urls', namespace='home')),
     url(r'^home/',include('home.urls', namespace='home')),
     url(r'^about/', TemplateView.as_view(template_name='pages/about.html'), name='about'),
     url(r'^signin/',include('signin.urls', namespace='signin')),

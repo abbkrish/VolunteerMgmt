@@ -1,3 +1,8 @@
+"""
+Test settings for VolunteerManagement project.
+
+- Used to run tests fast on the continuous integration server and locally
+"""
 
 from .base import *  # noqa
 
@@ -23,6 +28,10 @@ EMAIL_PORT = 1025
 # for unit testing purposes
 EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
 
+ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['.herokuapp.com', ])
+
+
+DATABASES['default'] = env.db("DATABASE_URL")
 # CACHING
 # ------------------------------------------------------------------------------
 # Speed advantages of in-memory caching without having to run Memcached
@@ -33,7 +42,6 @@ CACHES = {
     }
 }
 
-DATABASES['default'] =env.db('DATABASE_URL')
 # TESTING
 # ------------------------------------------------------------------------------
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'

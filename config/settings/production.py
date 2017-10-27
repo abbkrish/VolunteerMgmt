@@ -169,7 +169,7 @@ TEMPLATES[0]['OPTIONS']['loaders'] = [
 DATABASES['default'] = env.db('DATABASE_URL')
 
 
-'''
+
 # CACHING
 # ------------------------------------------------------------------------------
 
@@ -186,7 +186,7 @@ CACHES = {
         }
     }
 }
-'''
+
 
 '''
 # Sentry Configuration

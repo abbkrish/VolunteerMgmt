@@ -4,8 +4,25 @@ from django.contrib.auth.hashers import make_password
 
 from django.core import validators
 
+from django.db import models
 
 from .models import User
+
+class ListTextWidget(forms.TextInput):
+	def __init__(self, data_list, name, *args, **kwargs):
+		super(ListTextWidget, self).__init__(*args, **kwargs)
+		self._name = name
+		self._list = data_list
+		self.attrs.update({'list':'list__%s' % self._name})
+
+	def render(self, name, value, attrs=None):
+		text_html = super(ListTextWidget, self).render(name, value, attrs=attrs)
+		data_list = '<datalist id="list__%s">' % self._name
+		for item in self._list:
+			data_list += '<option value="%s">' % item
+		data_list += '</datalist>'
+
+		return (text_html + data_list)
 
 class SubmitForm(forms.Form):
 	first_name = forms.CharField(label='first_name', max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Enter your First name'}))
@@ -17,15 +34,21 @@ class SubmitForm(forms.Form):
 	state = forms.CharField(label='state', max_length = 500, widget=forms.TextInput(attrs={'placeholder': 'State'}))
 	zipcode = forms.CharField(label='zipcode', max_length = 100, widget=forms.TextInput(attrs={'placeholder': '5 digit zipcode'}))
 	waiverfiled = forms.BooleanField(label='waiver', required=False)
-	volunteergroup = forms.CharField(label='volunteergroup', max_length = 500, widget=forms.TextInput(attrs={'placeholder': 'Eg: First Year Medical Student'}))
+	volunteergroup = forms.CharField(label='volunteergroup', max_length = 500)# widget=forms.TextInput(attrs={'placeholder': 'Eg: First Year Medical Student'}))
 	#password = forms.CharField(label='pwd', max_length = 300, widget=forms.PasswordInput(attrs={'placeholder': 'Enter your Password'}), initial = 'NULL')
 	#confirm_password = forms.CharField(label = "c_pwd", max_length = 300, widget=forms.PasswordInput(attrs={'placeholder': 'Confirm your Password'}), initial='NULL')
 
 
 
+	def __init__(self, *args, **kwargs):
+		_volunteer_group_list = kwargs.pop('data_list', None)
+		super(SubmitForm, self).__init__(*args, **kwargs)
+		self.fields['volunteergroup'].widget = ListTextWidget(data_list=_volunteer_group_list, name='volunteer_group_list')
+
 	class Meta:
 		model = User
 		fields = ('email')
+		
 
 
 	def clean_password2(self):

@@ -55,19 +55,22 @@ class UserListView(LoginRequiredMixin, ListView):
 
 ## TODO Later : Fix the issue where transaction isnt rolled back on failure
 def signup_view(request):
-    form = SubmitForm()
+    volunteer_group_list = ('Christ Church', 'Newark Academy', 'New Volunteers', 'World Wide Orphans', 
+      'Congregation Beth El','Investors', 'Seton Hall Nursing', 'Freewalkers', 'Carpenter Club', 
+      'Clarity', 'Arturo\'s','Temple Sharey Tefilo','Congregation B\'nai Jesurun' )
+    
     if request.method == 'GET':
         if request.user.is_authenticated:
             return redirect('/')
         else:
-            form = SubmitForm()
+            form = SubmitForm(data_list = volunteer_group_list)
             context = {"nav1": "Login", "form": form}
             return render(request,'pages/signup.html', context)
     else:
+        
         form = SubmitForm(request.POST, initial={"password":'NULL', "confirm_password": 'NULL'})
         context = {"nav1": "Login", "form": form}
         if form.is_valid():
-            print("valid")
             new_volunteer = User(first_name = form.cleaned_data['first_name'],
                                       last_name = form.cleaned_data['last_name'],
                                       email = form.cleaned_data['email'],
@@ -95,7 +98,6 @@ def signup_view(request):
             return render(request, 'pages/signed_up.html', context = {"type":"signing up", "vname":form.cleaned_data['first_name'] + ' ' + form.cleaned_data['last_name']})
 
         else:
-            print(form.errors.as_data())
             return render(request,'signup.html', context)
 
 

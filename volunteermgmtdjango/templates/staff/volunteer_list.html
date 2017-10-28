@@ -24,7 +24,28 @@
 <link href="{% static 'css/volunteer_list.css' %}" rel="stylesheet">
 <script src="{% static 'js/volunteer_list.js' %}"></script>
 <script type="text/javascript" language="javascript" class="init">
+
+
+
+/* Safari */
+window.onpageshow = function (event) {
+    if (event.persisted) {
+        window.location.reload();
+    }
+};
+
+/*Other browsers*/
+if (sessionStorage.getItem("send_email_visited")) {
+          sessionStorage.removeItem("send_email_visited");
+          console.log("reload");
+          window.location.reload(true); // force refresh page1
+        }
      $(document).ready(function() {
+
+
+          
+
+        sessionStorage.setItem("volunteer_list_visited", "True");
         var json=JSON.stringify({{user_data}});
         JSON.parse(json)
         //console.log(json)
@@ -76,7 +97,7 @@
                 //$(button).submit();
                 //$.redirect('/');
                 var jdata = dt.rows( { selected: true } ).data().toArray()
-                var json = JSON.stringify(jdata) 
+                var json = JSON.stringify(jdata)
                 $.ajax({
                 url: "{% url 'staff:volunteer_list' %}",
                 type: 'POST',
@@ -84,7 +105,9 @@
                 csrfmiddlewaretoken: '{{ csrf_token }}'
               },
 
+
                 dataType: 'json',
+                cache: false,
                success: function (result) {
                   
                   console.log("success")

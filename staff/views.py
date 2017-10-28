@@ -8,7 +8,7 @@ from django.shortcuts import render, redirect, HttpResponseRedirect, render_to_r
 
 from django.contrib.auth import authenticate, login, logout
 
-
+from django.contrib.auth.decorators import login_required
 from volunteermgmtdjango.users.models import User
 
 import json 
@@ -24,13 +24,15 @@ from django.utils.html import mark_safe
 # Create your views here.
 
 
-
+#Since DateTime.date is not JSON serializable
 def date_handler(obj):
     if hasattr(obj, 'isoformat'):
         return obj.isoformat()
     else:
         raise TypeError
 
+
+@login_required(login_url = '/staff/')
 def volunteerListView(request, format='json'):
     if request.user.is_authenticated and request.method == 'GET':
         queryset = SignedInUsers.objects.all().distinct('User__first_name', 'User__last_name', 'User__email', 'date', 'User__volunteer_group')
@@ -46,6 +48,7 @@ def volunteerListView(request, format='json'):
         
        
         dat = json.loads(request.POST['data'])
+        print(dat, " Post dat")
 
         #iterate through dat to get the list of emails
         emails = []
@@ -53,16 +56,18 @@ def volunteerListView(request, format='json'):
             emails.append(i['User__email'])
 
         #get distinct emails
-        emails = list(set(emails))
-        context = {'emails': emails, "staff_signed_in": True, "staff_logout": "Staff Logout"
+        distinct_emails = list(set(emails))
+        context = {'emails': distinct_emails, "staff_signed_in": True, "staff_logout": "Staff Logout"
                    }
-        request.session['emails'] = emails
+        request.session['emails'] = distinct_emails
+        print(request.session['emails'], " Post")
         return HttpResponseRedirect(reverse('staff:email'))
     else: 
         return redirect(reverse('staff:login'))
 
 
 
+@login_required(login_url = '/staff/')
 def email_view(request):
     if request.method == 'GET':
         if request.user.is_authenticated:
@@ -71,6 +76,7 @@ def email_view(request):
             emails = []
             if 'emails' in request.session.keys():
                 emails = request.session['emails']
+            print(emails, "Get")
             email_strings = ''
             for j,s in enumerate(emails):
                 email_strings += s 
@@ -82,7 +88,7 @@ def email_view(request):
 
     elif request.method == 'POST' and request.user.is_authenticated:
         pass
-    
+
     return render(request, reverse('staff:email'), {})
     pass
 

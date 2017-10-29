@@ -53,6 +53,24 @@
 						</div>
 
 
+
+						<!-- Subject -->
+						<div class="form-group has-error">
+							<label for="email" class="cols-sm-2 control-label">Subject</label>
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									{{form.subject|attr:"class:form-control"}}
+								</div>
+							</div>
+							{% if form.subject.errors %}
+            						{% for error in form.subject.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+						</div>
+
+
 						<!-- Recipients -->
 						<div class="form-group has-error">
 							<label for="email" class="cols-sm-2 control-label">Recipients</label>

@@ -15,11 +15,16 @@ import json
 
 from django.core import serializers
 
+from .models import EmailUsers, Emails
+
 from signin.models import UserTable
 
 from signin.models import SignedInUsers
 
 from django.utils.html import mark_safe
+
+
+from .services import Email 
 
 # Create your views here.
 
@@ -39,16 +44,18 @@ def volunteerListView(request, format='json'):
         values = queryset.values('User__first_name', 'User__last_name', 'User__email', 'date', 'User__volunteer_group')
         data = list(values)
         table = UserTable(values)
-       
-
-      
         context = {'user_data': mark_safe(json.dumps(data, default = date_handler)), "staff_signed_in": True, "staff_logout": "Staff Logout"}
         return render(request,'staff/volunteer_list.html', context)
+    
+
     elif request.method == 'POST' and request.user.is_authenticated:
         
-       
+        if 'emails' in request.session.keys():
+            del request.session['emails']
+        
+        if EmailUsers.objects.count() > 0:
+                EmailUsers.objects.all().delete()
         dat = json.loads(request.POST['data'])
-        print(dat, " Post dat")
 
         #iterate through dat to get the list of emails
         emails = []
@@ -57,10 +64,7 @@ def volunteerListView(request, format='json'):
 
         #get distinct emails
         distinct_emails = list(set(emails))
-        context = {'emails': distinct_emails, "staff_signed_in": True, "staff_logout": "Staff Logout"
-                   }
-        request.session['emails'] = distinct_emails
-        print(request.session['emails'], " Post")
+        emails_instance = EmailUsers.objects.create(emails = distinct_emails)
         return HttpResponseRedirect(reverse('staff:email'))
     else: 
         return redirect(reverse('staff:login'))
@@ -73,24 +77,37 @@ def email_view(request):
         if request.user.is_authenticated:
 
             #Selected emails from Emails Page
-            emails = []
-            if 'emails' in request.session.keys():
-                emails = request.session['emails']
-            print(emails, "Get")
-            email_strings = ''
-            for j,s in enumerate(emails):
-                email_strings += s 
-                if j < len(emails) - 1:
-                    email_strings += ','
+            email_instance = EmailUsers.objects.order_by('-loggedin_ts')[0]
+            email_strings = ','.join(map(str,email_instance.emails))
             form = EmailForm(initial= {'recipients': email_strings})
-            context = {"form": form, "staff_signed_in": True, "staff_logout": "Staff Logout"}
+            context = {"form": form, "staff_signed_in": True, "staff_logout": "Staff Logout"}            
             return render(request, 'staff/send_email.html', context)
 
     elif request.method == 'POST' and request.user.is_authenticated:
-        pass
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            d = dict()
+            d['message'] = form.cleaned_data['message']
+            d['sender'] = form.cleaned_data['sender']
+            d['cc_myself'] = form.cleaned_data['cc_myself']
+            d['recipients'] = form.cleaned_data['recipients']
+            d['subject'] = form.cleaned_data['subject']
+            E = Email(**d)
+            E.send_email()
+
+            #Store email in Emails Database Table
+            Emails.objects.create(subject = d['subject'], 
+                                  message = d['message'],
+                                  sender = d['sender'],
+                                  recipients = d['recipients'],
+                                  cc_myself = d['cc_myself'],
+                                  )
+            return HttpResponseRedirect(reverse('home:home_view'))
+        else:
+            return HttpResponseRedirect(reverse('staff:email'))
 
     return render(request, reverse('staff:email'), {})
-    pass
+    
 
 
 

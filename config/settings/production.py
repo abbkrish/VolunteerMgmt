@@ -13,7 +13,7 @@ Production Configurations
 """
 
 
-#import logging
+import logging
 
 
 from .base import *  # noqa
@@ -30,7 +30,7 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # This ensures that Django will be able to detect a secure connection
 # properly on Heroku.
-#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # raven sentry client
 # See https://docs.sentry.io/clients/python/integrations/django/
 #INSTALLED_APPS += ['raven.contrib.django.raven_compat', ]
@@ -188,11 +188,10 @@ CACHES = {
 }
 
 
-'''
+
 # Sentry Configuration
 SENTRY_DSN = env('DJANGO_SENTRY_DSN')
 SENTRY_CLIENT = env('DJANGO_SENTRY_CLIENT', default='raven.contrib.django.raven_compat.DjangoClient')
-''
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
@@ -245,7 +244,7 @@ RAVEN_CONFIG = {
     'CELERY_LOGLEVEL': env.int('DJANGO_SENTRY_LOG_LEVEL', logging.INFO),
     'DSN': SENTRY_DSN
 }
-'''
+
 
 
 # Custom Admin URL, use {% url 'admin:index' %}

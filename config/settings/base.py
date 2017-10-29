@@ -100,11 +100,11 @@ FIXTURE_DIRS = (
     str(APPS_DIR.path('fixtures')),
 )
 
-'''
+
 # EMAIL CONFIGURATION
 # ------------------------------------------------------------------------------
 EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
-'''
+
 # MANAGER CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
@@ -275,7 +275,7 @@ LOGIN_URL = 'account_login'
 
 # SLUGLIFIER
 AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
-'''
+
 ########## CELERY
 INSTALLED_APPS += ['volunteermgmtdjango.taskapp.celery.CeleryConfig']
 CELERY_BROKER_URL = env('CELERY_BROKER_URL', default='django://')
@@ -285,7 +285,6 @@ else:
     CELERY_RESULT_BACKEND = CELERY_BROKER_URL
 ########## END CELERY
 
-'''
 # django-compressor
 # ------------------------------------------------------------------------------
 INSTALLED_APPS += ['compressor']

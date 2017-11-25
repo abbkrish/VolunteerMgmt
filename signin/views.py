@@ -49,7 +49,6 @@ class SignInView(SingleTableView, FilterView):
 
 class PostSignIn(TemplateView):
 
-
 	
 	def get(self, *args, **kwargs):
 		sign_in_instance = ' ' + 'null' + ' ' 

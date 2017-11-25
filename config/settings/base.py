@@ -65,7 +65,6 @@ LOCAL_APPS = [
     'staff',
     'django_tables2',
     'django_filters',
-    'django_jenkins',
     'phonenumber_field'
 ]
 

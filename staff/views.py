@@ -38,12 +38,11 @@ def date_handler(obj):
 
 
 @login_required(login_url = '/staff/')
-def volunteerListView(request, format='json'):
+def volunteer_list_view(request, format='json'):
     if request.user.is_authenticated and request.method == 'GET':
         queryset = SignedInUsers.objects.all().distinct('User__first_name', 'User__last_name', 'User__email', 'date', 'User__volunteer_group')
         values = queryset.values('User__first_name', 'User__last_name', 'User__email', 'date', 'User__volunteer_group')
         data = list(values)
-        table = UserTable(values)
         context = {'user_data': mark_safe(json.dumps(data, default = date_handler)), "staff_signed_in": True, "staff_logout": "Staff Logout"}
         return render(request,'staff/volunteer_list.html', context)
     
@@ -124,7 +123,7 @@ def login_view(request):
         if form.is_valid():
 
             volunteer = User.objects.get(email=form.cleaned_data['email'])
-            if volunteer.is_staff == True:
+            if volunteer.is_staff:
                 try:
                     user = authenticate(username=form.cleaned_data['email'], password=form.cleaned_data['password'])                
                 except:
@@ -140,7 +139,7 @@ def login_view(request):
 
                     return render(request, '404.html', {})
 
-        return render(request, "##")
+        return render(request, reverse('home:home_view'))
 
 
 def loggedout_view(request):

@@ -19,8 +19,11 @@ class SubmitForm(forms.Form):
 	city = forms.CharField(label='city', max_length = 500, widget=forms.TextInput(attrs={'placeholder': 'City'}))
 	state = forms.CharField(label='state', max_length = 500, widget=forms.TextInput(attrs={'placeholder': 'State'}))
 	zipcode = forms.CharField(label='zipcode', max_length = 100, widget=forms.TextInput(attrs={'placeholder': '5 digit zipcode'}))
+	community_svc_hrs = forms.IntegerField(label='cservice_hours', widget=forms.TextInput(attrs={'placeholder': 'Community Service Hours'}))
+	phone_number = forms.CharField(label='phone', max_length = 500, widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}))
+	volunteergroup = forms.CharField(label='volunteergroup', max_length = 500)
 	waiverfiled = forms.BooleanField(label='waiver', required=False)
-	volunteergroup = forms.CharField(label='volunteergroup', max_length = 500)# widget=forms.TextInput(attrs={'placeholder': 'Eg: First Year Medical Student'}))
+	other = forms.CharField(label='other', max_length = 500, required=False, widget=forms.TextInput(attrs={'placeholder': 'Other'}))
 	#password = forms.CharField(label='pwd', max_length = 300, widget=forms.PasswordInput(attrs={'placeholder': 'Enter your Password'}), initial = 'NULL')
 	#confirm_password = forms.CharField(label = "c_pwd", max_length = 300, widget=forms.PasswordInput(attrs={'placeholder': 'Confirm your Password'}), initial='NULL')
 

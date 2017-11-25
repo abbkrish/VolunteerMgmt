@@ -4,6 +4,7 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from custom_user.models import AbstractEmailUser
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 
@@ -54,8 +55,11 @@ class User(AbstractUser):
     city = models.CharField(max_length=200, default = 'South Orange')
     state = models.CharField(max_length=200, default = 'NJ')
     zipcode = models.CharField(max_length=200, default = 'NULL')
-    waiver_filed = models.BooleanField(default = False)
+    community_svc_hrs = models.IntegerField(blank=True, default=0)
+    phone_number = PhoneNumberField(blank=True)
     volunteer_group = models.CharField(max_length=200, default = 'NULL')
+    waiver_filed = models.BooleanField(default = False)
+    other = models.CharField(max_length=200, default='NULL')
     password = models.CharField(max_length=200, default = 'NULL')
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)

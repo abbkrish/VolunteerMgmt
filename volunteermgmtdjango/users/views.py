@@ -60,12 +60,9 @@ def signup_view(request):
       'Clarity', 'Arturo\'s','Temple Sharey Tefilo','Congregation B\'nai Jesurun' )
     
     if request.method == 'GET':
-        if request.user.is_authenticated:
-            return redirect('/')
-        else:
-            form = SubmitForm(data_list = volunteer_group_list)
-            context = {"nav1": "Login", "form": form}
-            return render(request,'pages/signup.html', context)
+        form = SubmitForm(data_list = volunteer_group_list)
+        context = {"form": form}
+        return render(request,'pages/signup.html', context)
     else:
         
         form = SubmitForm(request.POST, initial={"password":'NULL', "confirm_password": 'NULL'})

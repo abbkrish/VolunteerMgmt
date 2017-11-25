@@ -64,7 +64,9 @@ LOCAL_APPS = [
     'signin',
     'staff',
     'django_tables2',
-    'django_filters'
+    'django_filters',
+    'django_jenkins',
+    'phonenumber_field'
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

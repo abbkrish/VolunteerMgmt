@@ -1,0 +1,7 @@
+Release Nov 24
+
+1. Volunteer Sign Up to First Time Users. 
+2. Export to PDF, CSV (Excel) Volunteer Details Table. 
+3. Sign in Selected User (Click Here to Sign In).
+4. Sign Up Page - Community Service Hours, Phone #, Other,  Waiver should be at the end followed by other. 
+5. After sign in, reroute to the same page (sign in page). 

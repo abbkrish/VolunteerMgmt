@@ -55,7 +55,7 @@
      "buttons": [
      {
             "extend": 'selectedSingle',
-            "text": 'Sign in Selected User',
+            "text": 'Click Here To Sign In',
             /*"fnClick": function(e, dt, button, config){
               
               //console.log( dt.row( { selected: true } ).data() );
@@ -75,11 +75,11 @@
                 csrfmiddlewaretoken: '{{ csrf_token }}'
               },
                 success: function (result) {
-                  //window.location.href = "/signin/submit"
+                  window.location.href = "{% url 'signin:submit' %}"
                   
                 }
             });
-            window.location.href = "{% url 'signin:submit' %}";
+            //window.location.href = "{% url 'signin:submit' %}";
             },
         }
         ]

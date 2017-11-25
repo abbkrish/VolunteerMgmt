@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 # Create your models here.
 import django_tables2 as tables
@@ -28,4 +29,6 @@ class SignedInUsers(models.Model):
 	loggedin_ts = models.DateTimeField(auto_now_add=True)
 	date = models.DateField(auto_now_add=True)
 	created = models.DateTimeField(auto_now_add=True)
-	modified = models.DateTimeField(auto_now=True)
+	modified = models.DateTimeField(auto_now_add=True)
+
+

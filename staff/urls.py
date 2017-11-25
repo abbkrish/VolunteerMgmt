@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from .views import login_view, loggedout_view, volunteerListView, email_view
+from .views import login_view, loggedout_view, volunteer_list_view, email_view
 
 
 urlpatterns = [
@@ -11,7 +11,7 @@ url(
         ),
 
 url( 
-		r'^volunteer_list/$',volunteerListView, name='volunteer_list'
+		r'^volunteer_list/$',volunteer_list_view, name='volunteer_list'
 		),
 
 url(

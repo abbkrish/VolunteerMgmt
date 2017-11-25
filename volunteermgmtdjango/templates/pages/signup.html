@@ -171,8 +171,58 @@
 							</div>
 						</div>
 
+
+						<!-- Community Service Hours -->
+						<div class="form-group col-xs-4 has-error">
+							<label for="cservice_hours" class="cols-sm-2 control-label">Community Service Hours</label>
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-drivers-license fa" aria-hidden="true"></i></span>
+									{{form.community_svc_hrs|attr:"class:form-control"}}
+								</div>
+								{% if form.community_svc_hrs.errors %}
+            						{% for error in form.community_svc_hrs.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+							</div>
+						</div>
+
+
+
+						<!-- Phone Number -->
+						<div class="form-group col-xs-4 has-error">
+							<label for="phone" class="cols-sm-2 control-label">Phone Number</label>
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-drivers-license fa" aria-hidden="true"></i></span>
+									{{form.phone_number|attr:"class:form-control"}}
+								</div>
+								{% if form.phone_number.errors %}
+            						{% for error in form.phone_number.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+							</div>
+						</div>
+
 						
 
+						<!-- Volunteer Group -->
+						<div class="form-group col-xs-4 has-error">
+							<label for="volunteergroup" class="cols-sm-2 control-label">Volunteer Group/Affiliation</label>
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+									{{form.volunteergroup|attr:"class:form-control"}}
+								</div>
+								{% if form.volunteergroup.errors %}
+            						{% for error in form.volunteergroup.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+							</div>
+						</div>
 						
 
 						<!-- Waiver Filed -->
@@ -188,22 +238,23 @@
           						{% endif %}
 						</div>
 
-
-						<!-- Voluntteer Group -->
+						<!-- Other -->
 						<div class="form-group col-xs-4 has-error">
-							<label for="volunteergroup" class="cols-sm-2 control-label">Volunteer Group/Affiliation</label>
+							<label for="other" class="cols-sm-2 control-label">Other</label>
 							<div class="cols-md-5">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									{{form.volunteergroup|attr:"class:form-control"}}
+									<span class="input-group-addon"><i class="fa fa-comment fa" aria-hidden="true"></i></span>
+									{{form.other|attr:"class:form-control"}}
 								</div>
-								{% if form.volunteergroup.errors %}
-            						{% for error in form.volunteergroup.errors %}
+								{% if form.other.errors %}
+            						{% for error in form.other.errors %}
               							<p class="error-message">{{ error }}</p>
             						{% endfor %}
           						{% endif %}
 							</div>
 						</div>
+
+						
 
 
 						
@@ -245,18 +296,21 @@
 						{% endcomment %}
 
 						
-						<!-- Register Button -->
-						<div class="form-group ">
-							<input type = "submit" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button"/>
-						</div>
-
-
 						<!-- Confirm agreement -->
 						<div class="form-group has-error">
 							<div class="cols-md-5">
 									<p style = "font-size:12px; color: Burlywood;"> By clicking the Submit button, you agree to the terms and conditions listed in the <a href = "{{STATIC_URL}}Release and Waiver.docx" style = "color:aliceblue;">Waiver Document</a> </p>
 							</div>
 						</div>
+
+
+						<!-- Register Button -->
+						<div class="form-group ">
+							<input type = "submit" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button"/>
+						</div>
+
+
+						
 
 						
 					</form>

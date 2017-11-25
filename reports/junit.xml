@@ -1,0 +1,93 @@
+<testsuite errors="14" failures="0" name="Django Project Tests" skips="0" tests="14" time="0.052"><testcase classname="volunteermgmtdjango.users.tests.test_models.TestUser" name="test__str__" time="0.000130"><error message="create_user() takes from 2 to 3 positional arguments but 4 were given" type="builtins.TypeError">Traceback (most recent call last):
+  File "/Users/user/Google Drive/Pycharm/VolunteerMgmt/volunteermgmtdjango/users/tests/test_models.py", line 7, in setUp
+    self.user = self.make_user()
+  File "/Users/user/.venv/venv-volunteer-mgmt-django/lib/python3.5/site-packages/test_plus/test.py", line 281, in make_user
+    password,
+TypeError: create_user() takes from 2 to 3 positional arguments but 4 were given
+</error></testcase><testcase classname="volunteermgmtdjango.users.tests.test_models.TestUser" name="test_get_absolute_url" time="0.000097"><error message="create_user() takes from 2 to 3 positional arguments but 4 were given" type="builtins.TypeError">Traceback (most recent call last):
+  File "/Users/user/Google Drive/Pycharm/VolunteerMgmt/volunteermgmtdjango/users/tests/test_models.py", line 7, in setUp
+    self.user = self.make_user()
+  File "/Users/user/.venv/venv-volunteer-mgmt-django/lib/python3.5/site-packages/test_plus/test.py", line 281, in make_user
+    password,
+TypeError: create_user() takes from 2 to 3 positional arguments but 4 were given
+</error></testcase><testcase classname="volunteermgmtdjango.users.tests.test_urls.TestUserURLs" name="test_detail_resolve" time="0.000131"><error message="create_user() takes from 2 to 3 positional arguments but 4 were given" type="builtins.TypeError">Traceback (most recent call last):
+  File "/Users/user/Google Drive/Pycharm/VolunteerMgmt/volunteermgmtdjango/users/tests/test_urls.py", line 10, in setUp
+    self.user = self.make_user()
+  File "/Users/user/.venv/venv-volunteer-mgmt-django/lib/python3.5/site-packages/test_plus/test.py", line 281, in make_user
+    password,
+TypeError: create_user() takes from 2 to 3 positional arguments but 4 were given
+</error></testcase><testcase classname="volunteermgmtdjango.users.tests.test_urls.TestUserURLs" name="test_detail_reverse" time="0.000093"><error message="create_user() takes from 2 to 3 positional arguments but 4 were given" type="builtins.TypeError">Traceback (most recent call last):
+  File "/Users/user/Google Drive/Pycharm/VolunteerMgmt/volunteermgmtdjango/users/tests/test_urls.py", line 10, in setUp
+    self.user = self.make_user()
+  File "/Users/user/.venv/venv-volunteer-mgmt-django/lib/python3.5/site-packages/test_plus/test.py", line 281, in make_user
+    password,
+TypeError: create_user() takes from 2 to 3 positional arguments but 4 were given
+</error></testcase><testcase classname="volunteermgmtdjango.users.tests.test_urls.TestUserURLs" name="test_list_resolve" time="0.000086"><error message="create_user() takes from 2 to 3 positional arguments but 4 were given" type="builtins.TypeError">Traceback (most recent call last):
+  File "/Users/user/Google Drive/Pycharm/VolunteerMgmt/volunteermgmtdjango/users/tests/test_urls.py", line 10, in setUp
+    self.user = self.make_user()
+  File "/Users/user/.venv/venv-volunteer-mgmt-django/lib/python3.5/site-packages/test_plus/test.py", line 281, in make_user
+    password,
+TypeError: create_user() takes from 2 to 3 positional arguments but 4 were given
+</error></testcase><testcase classname="volunteermgmtdjango.users.tests.test_urls.TestUserURLs" name="test_list_reverse" time="0.000063"><error message="create_user() takes from 2 to 3 positional arguments but 4 were given" type="builtins.TypeError">Traceback (most recent call last):
+  File "/Users/user/Google Drive/Pycharm/VolunteerMgmt/volunteermgmtdjango/users/tests/test_urls.py", line 10, in setUp
+    self.user = self.make_user()
+  File "/Users/user/.venv/venv-volunteer-mgmt-django/lib/python3.5/site-packages/test_plus/test.py", line 281, in make_user
+    password,
+TypeError: create_user() takes from 2 to 3 positional arguments but 4 were given
+</error></testcase><testcase classname="volunteermgmtdjango.users.tests.test_urls.TestUserURLs" name="test_redirect_resolve" time="0.000062"><error message="create_user() takes from 2 to 3 positional arguments but 4 were given" type="builtins.TypeError">Traceback (most recent call last):
+  File "/Users/user/Google Drive/Pycharm/VolunteerMgmt/volunteermgmtdjango/users/tests/test_urls.py", line 10, in setUp
+    self.user = self.make_user()
+  File "/Users/user/.venv/venv-volunteer-mgmt-django/lib/python3.5/site-packages/test_plus/test.py", line 281, in make_user
+    password,
+TypeError: create_user() takes from 2 to 3 positional arguments but 4 were given
+</error></testcase><testcase classname="volunteermgmtdjango.users.tests.test_urls.TestUserURLs" name="test_redirect_reverse" time="0.000059"><error message="create_user() takes from 2 to 3 positional arguments but 4 were given" type="builtins.TypeError">Traceback (most recent call last):
+  File "/Users/user/Google Drive/Pycharm/VolunteerMgmt/volunteermgmtdjango/users/tests/test_urls.py", line 10, in setUp
+    self.user = self.make_user()
+  File "/Users/user/.venv/venv-volunteer-mgmt-django/lib/python3.5/site-packages/test_plus/test.py", line 281, in make_user
+    password,
+TypeError: create_user() takes from 2 to 3 positional arguments but 4 were given
+</error></testcase><testcase classname="volunteermgmtdjango.users.tests.test_urls.TestUserURLs" name="test_update_resolve" time="0.000059"><error message="create_user() takes from 2 to 3 positional arguments but 4 were given" type="builtins.TypeError">Traceback (most recent call last):
+  File "/Users/user/Google Drive/Pycharm/VolunteerMgmt/volunteermgmtdjango/users/tests/test_urls.py", line 10, in setUp
+    self.user = self.make_user()
+  File "/Users/user/.venv/venv-volunteer-mgmt-django/lib/python3.5/site-packages/test_plus/test.py", line 281, in make_user
+    password,
+TypeError: create_user() takes from 2 to 3 positional arguments but 4 were given
+</error></testcase><testcase classname="volunteermgmtdjango.users.tests.test_urls.TestUserURLs" name="test_update_reverse" time="0.000058"><error message="create_user() takes from 2 to 3 positional arguments but 4 were given" type="builtins.TypeError">Traceback (most recent call last):
+  File "/Users/user/Google Drive/Pycharm/VolunteerMgmt/volunteermgmtdjango/users/tests/test_urls.py", line 10, in setUp
+    self.user = self.make_user()
+  File "/Users/user/.venv/venv-volunteer-mgmt-django/lib/python3.5/site-packages/test_plus/test.py", line 281, in make_user
+    password,
+TypeError: create_user() takes from 2 to 3 positional arguments but 4 were given
+</error></testcase><testcase classname="volunteermgmtdjango.users.tests.test_views.TestUserRedirectView" name="test_get_redirect_url" time="0.000087"><error message="create_user() takes from 2 to 3 positional arguments but 4 were given" type="builtins.TypeError">Traceback (most recent call last):
+  File "/Users/user/Google Drive/Pycharm/VolunteerMgmt/volunteermgmtdjango/users/tests/test_views.py", line 14, in setUp
+    self.user = self.make_user()
+  File "/Users/user/.venv/venv-volunteer-mgmt-django/lib/python3.5/site-packages/test_plus/test.py", line 281, in make_user
+    password,
+TypeError: create_user() takes from 2 to 3 positional arguments but 4 were given
+</error></testcase><testcase classname="volunteermgmtdjango.users.tests.test_views.TestUserUpdateView" name="test_get_object" time="0.000097"><error message="create_user() takes from 2 to 3 positional arguments but 4 were given" type="builtins.TypeError">Traceback (most recent call last):
+  File "/Users/user/Google Drive/Pycharm/VolunteerMgmt/volunteermgmtdjango/users/tests/test_views.py", line 41, in setUp
+    super(TestUserUpdateView, self).setUp()
+  File "/Users/user/Google Drive/Pycharm/VolunteerMgmt/volunteermgmtdjango/users/tests/test_views.py", line 14, in setUp
+    self.user = self.make_user()
+  File "/Users/user/.venv/venv-volunteer-mgmt-django/lib/python3.5/site-packages/test_plus/test.py", line 281, in make_user
+    password,
+TypeError: create_user() takes from 2 to 3 positional arguments but 4 were given
+</error></testcase><testcase classname="volunteermgmtdjango.users.tests.test_views.TestUserUpdateView" name="test_get_success_url" time="0.000050"><error message="create_user() takes from 2 to 3 positional arguments but 4 were given" type="builtins.TypeError">Traceback (most recent call last):
+  File "/Users/user/Google Drive/Pycharm/VolunteerMgmt/volunteermgmtdjango/users/tests/test_views.py", line 41, in setUp
+    super(TestUserUpdateView, self).setUp()
+  File "/Users/user/Google Drive/Pycharm/VolunteerMgmt/volunteermgmtdjango/users/tests/test_views.py", line 14, in setUp
+    self.user = self.make_user()
+  File "/Users/user/.venv/venv-volunteer-mgmt-django/lib/python3.5/site-packages/test_plus/test.py", line 281, in make_user
+    password,
+TypeError: create_user() takes from 2 to 3 positional arguments but 4 were given
+</error></testcase><testcase classname="unittest.loader._FailedTest" name="volunteermgmtdjango.users.tests.test_admin" time="0.000059"><error message="Failed to import test module: volunteermgmtdjango.users.tests.test_admin&#10;Traceback (most recent call last):&#10;  File &quot;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/unittest/loader.py&quot;, line 428, in _find_test_path&#10;    module = self._get_module_from_name(name)&#10;  File &quot;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/unittest/loader.py&quot;, line 369, in _get_module_from_name&#10;    __import__(name)&#10;  File &quot;/Users/user/Google Drive/Pycharm/VolunteerMgmt/volunteermgmtdjango/users/tests/test_admin.py&quot;, line 3, in &lt;module&gt;&#10;    from ..admin import MyUserCreationForm&#10;ImportError: cannot import name 'MyUserCreationForm'&#10;" type="builtins.ImportError">ImportError: Failed to import test module: volunteermgmtdjango.users.tests.test_admin
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/unittest/loader.py", line 428, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/unittest/loader.py", line 369, in _get_module_from_name
+    __import__(name)
+  File "/Users/user/Google Drive/Pycharm/VolunteerMgmt/volunteermgmtdjango/users/tests/test_admin.py", line 3, in &lt;module&gt;
+    from ..admin import MyUserCreationForm
+ImportError: cannot import name 'MyUserCreationForm'
+
+</error></testcase></testsuite>

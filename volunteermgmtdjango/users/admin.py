@@ -29,6 +29,7 @@ class UserAdmin(AuthUserAdmin):
     list_display = ('email', 'first_name', 'last_name', 'is_staff', 'volunteer_group')
     search_fields = ('email', 'first_name', 'last_name')
     ordering = ('email',)
+
 '''
 class MyUserChangeForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):
@@ -41,6 +42,7 @@ class MyUserCreationForm(UserCreationForm):
         'duplicate_username': 'This username has already been taken.'
     })
 
+
     class Meta(UserCreationForm.Meta):
         model = User
 
@@ -52,7 +54,6 @@ class MyUserCreationForm(UserCreationForm):
             return username
 
         raise forms.ValidationError(self.error_messages['duplicate_username'])
-
 
 
 

@@ -65,7 +65,8 @@ LOCAL_APPS = [
     'staff',
     'django_tables2',
     'django_filters',
-    'phonenumber_field'
+    'phonenumber_field',
+    'floppyforms'
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

@@ -67,7 +67,7 @@ def signup_view(request):
         
         form = SubmitForm(request.POST, initial={"password":'NULL', "confirm_password": 'NULL'})
         context = {"nav1": "Login", "form": form}
-        if form.is_valid():
+        if form.is_valid() and form.valid_username(form.cleaned_data['email']):
             new_volunteer = User(first_name = form.cleaned_data['first_name'],
                                       last_name = form.cleaned_data['last_name'],
                                       email = form.cleaned_data['email'],
@@ -75,13 +75,27 @@ def signup_view(request):
                                       street_address_2 = form.cleaned_data['street_addr_2'],
                                       zipcode = form.cleaned_data['zipcode'],
                                       waiver_filed = form.cleaned_data['waiverfiled'],
+                                      need_community_svc_hrs = form.cleaned_data['need_community_svc_hrs'],
                                       volunteer_group = form.cleaned_data['volunteergroup'],
                                       city = form.cleaned_data['city'],
-                                      state = form.cleaned_data['state']
+                                      state = form.cleaned_data['state'],
+                                      emergency_name = form.cleaned_data['emergency_name'],
                                       )
             #XXX: removed password hence commented this line 
             #new_volunteer.set_password(form.cleaned_data['password'])
-            
+            if not form.cleaned_data['phone_number'].startswith('+1'):
+              new_volunteer.phone_number = '+1{}'.format(form.cleaned_data['phone_number'])
+            else:
+              new_volunteer.phone_number = form.cleaned_data['phone_number']
+
+
+            if not form.cleaned_data['emergency_phone'].startswith('+1'):
+              new_volunteer.phone_number = '+1{}'.format(form.cleaned_data['emergency_phone'])
+            else:
+              new_volunteer.phone_number = form.cleaned_data['emergency_phone']
+
+
+
             new_volunteer.save()
 
             #No login needed
@@ -95,7 +109,8 @@ def signup_view(request):
             return render(request, 'pages/signed_up.html', context = {"type":"signing up", "vname":form.cleaned_data['first_name'] + ' ' + form.cleaned_data['last_name']})
 
         else:
-            return render(request,'signup.html', context)
+            context['form'] = form
+            return render(request,'pages/signup.html', context)
 
 
 

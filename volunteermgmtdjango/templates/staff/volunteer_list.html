@@ -52,6 +52,8 @@ if (sessionStorage.getItem("send_email_visited")) {
          var table = $('#example').DataTable( {
              "data":JSON.parse(json),
              "dom":"Bfrtip",
+             "autoWidth": false,
+             "pageResize": true,
              "columnDefs": [{
             
               "targets": 0,
@@ -65,7 +67,7 @@ if (sessionStorage.getItem("send_email_visited")) {
                     {"data":"User__last_name", "title": "Last Name"},
                     {"data":"User__email", "title":"Email"},
                     {"data":"date", "title": "Date Attended", "format": 'D MMM YYYY',},
-                    {"data":"User__volunteer_group", "title":"Volunteer Group"}
+                    {"data":"User__volunteer_group", "title":"Volunteer Group"},
                  ],
               "select": {"style": "multi"},
               //"select":true,
@@ -127,9 +129,8 @@ if (sessionStorage.getItem("send_email_visited")) {
         ]
 
    }
+
    );
-
-
 
 
     });
@@ -137,6 +138,7 @@ if (sessionStorage.getItem("send_email_visited")) {
 
 
  </script>
+
 
 
 

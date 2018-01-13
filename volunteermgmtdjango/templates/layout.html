@@ -27,6 +27,7 @@
     {% compress css %}
     <!-- This file stores project-specific CSS -->
     <link href="{% static 'css/project.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/awesomplete.css' %}"/>
   
     <!--<link href="https://editor.datatables.net/extensions/Editor/css/editor.dataTables.min.css" rel="stylesheet">-->
     {% endcompress %}
@@ -78,6 +79,9 @@
     <!-- Theme JavaScript -->
     <script src="{% static "js/new-age.min.js" %} "></script>
 
+    <!-- Datatables JS -->
+    <script src="{% static "js/awesomplete.js" %} "></script>
+
     <!--Datatables JS-->
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.2.3/js/dataTables.select.min.js"></script>
@@ -97,6 +101,7 @@
       {% compress js %}
       <script src="{% static 'js/project.js' %}"></script>
         <script src="{% static "js/jquery.redirect.js" %}"></script>
+
       {% endcompress %}
 
  {% endblock javascript %}

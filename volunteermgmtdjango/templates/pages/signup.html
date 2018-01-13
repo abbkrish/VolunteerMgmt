@@ -172,23 +172,6 @@
 						</div>
 
 
-						<!-- Community Service Hours -->
-						<div class="form-group col-xs-4 has-error">
-							<label for="cservice_hours" class="cols-sm-2 control-label">Community Service Hours</label>
-							<div class="cols-md-5">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-drivers-license fa" aria-hidden="true"></i></span>
-									{{form.community_svc_hrs|attr:"class:form-control"}}
-								</div>
-								{% if form.community_svc_hrs.errors %}
-            						{% for error in form.community_svc_hrs.errors %}
-              							<p class="error-message">{{ error }}</p>
-            						{% endfor %}
-          						{% endif %}
-							</div>
-						</div>
-
-
 
 						<!-- Phone Number -->
 						<div class="form-group col-xs-4 has-error">
@@ -206,6 +189,18 @@
 							</div>
 						</div>
 
+							<!-- Need Community Service hourse -->
+						<div class="form-group col-xs-4 has-error">
+							  <label for="waiver" class="cols-sm-2 control-label">Do you need Community Service Hours?</label>
+							  <div class="cols-md-5">
+							 	{{form.need_community_svc_hrs|attr:"class:form-control"}}
+							  </div>
+							  {% if form.need_community_svc_hrs.errors %}
+            						{% for error in form.need_community_svc_hrs.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+						</div>
 						
 
 						<!-- Volunteer Group -->
@@ -215,7 +210,6 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
 									{{form.volunteergroup|attr:"class:form-control"}}
-								</div>
 								{% if form.volunteergroup.errors %}
             						{% for error in form.volunteergroup.errors %}
               							<p class="error-message">{{ error }}</p>
@@ -227,7 +221,7 @@
 
 						<!-- Waiver Filed -->
 						<div class="form-group col-xs-4 has-error">
-							  <label for="waiver" class="cols-sm-2 control-label">Waiver Filed</label>
+							  <label for="waiver" class="cols-sm-2 control-label">Waiver Filed?</label>
 							  <div class="cols-md-5">
 							 	{{form.waiverfiled|attr:"class:form-control"}}
 							  </div>
@@ -238,9 +232,42 @@
           						{% endif %}
 						</div>
 
+						<!-- Emergency Contact Name -->
+						<div class="form-group col-xs-4 has-error">
+							<label for="emergency_name" class="cols-sm-2 control-label">Emergency Contact Name</label>
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									{{form.emergency_name|attr:"class:form-control"}}
+								</div>
+								{% if form.emergency_name.errors %}
+            						{% for error in form.emergency_name.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+							</div>
+						</div>
+
+
+						<!-- Emergency Phone Number -->
+						<div class="form-group col-xs-4 has-error">
+							<label for="emergency_phone" class="cols-sm-2 control-label">Emergency Contact Phone Number</label>
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-drivers-license fa" aria-hidden="true"></i></span>
+									{{form.emergency_phone|attr:"class:form-control"}}
+								</div>
+								{% if form.emergency_phone.errors %}
+            						{% for error in form.emergency_phone.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+							</div>
+						</div>
+
 						<!-- Other -->
 						<div class="form-group col-xs-4 has-error">
-							<label for="other" class="cols-sm-2 control-label">Other</label>
+							<label for="other" class="cols-sm-2 control-label">Additional Comments</label>
 							<div class="cols-md-5">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-comment fa" aria-hidden="true"></i></span>
@@ -299,7 +326,7 @@
 						<!-- Confirm agreement -->
 						<div class="form-group has-error">
 							<div class="cols-md-5">
-									<p style = "font-size:12px; color: Burlywood;"> By clicking the Submit button, you agree to the terms and conditions listed in the <a href = "{{STATIC_URL}}Release and Waiver.docx" style = "color:aliceblue;">Waiver Document</a> </p>
+									<p style = "font-size:12px; color: Burlywood;"> By clicking the Submit button, you agree that you have read and accept the terms and conditions listed in the <a href = "{{STATIC_URL}}Release and Waiver.pdf" style = "color:aliceblue;" target="_blank">Waiver Document ( click this link to read the Waiver) </a> </p>
 							</div>
 						</div>
 

@@ -348,14 +348,14 @@ body {
 
 #my_table{
 
-	background-color: #eff2e1;
-	border: 1px solid black;
-	color: black;
-	border-radius: 5px;
+  background-color: #eff2e1;
+  border: 1px solid black;
+  color: black;
+  border-radius: 5px;
     width: 70%;
-  	margin-top: 100px;
-  	margin-left: 200px;
-  	float: none;
+    margin-top: 100px;
+    margin-left: 200px;
+    float: none;
 }
 
 table.dataTable tr th.select-checkbox.selected::after {
@@ -365,4 +365,3 @@ table.dataTable tr th.select-checkbox.selected::after {
     text-align: center;
     text-shadow: rgb(176, 190, 217) 1px 1px, rgb(176, 190, 217) -1px -1px, rgb(176, 190, 217) 1px -1px, rgb(176, 190, 217) -1px 1px;
 }
-

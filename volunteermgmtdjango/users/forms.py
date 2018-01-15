@@ -26,8 +26,8 @@ class SubmitForm(forms.Form):
     zipcode = forms.CharField(label='zipcode', max_length = 100, widget=forms.TextInput(attrs={'placeholder': '5 digit zipcode'}))
     need_community_svc_hrs = forms.BooleanField(label='waiver', required=False)
     phone_number = forms.CharField(label='phone', max_length = 500, widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}))
-    #volunteergroup = OptionalChoiceField(choices=(("Arturo's","Arturo's"), ('Shalom','Shalom')), max_length=200)
-    volunteergroup = forms.CharField(label='volunteergroup', max_length = 500)
+    volunteergroup = OptionalChoiceField(choices=(ListTextWidget.get_choices_list()), max_length=200)
+    #volunteergroup = forms.CharField(label='volunteergroup', max_length = 500)
     emergency_name =forms.CharField(label='emergency_name', max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Emergency Contact name'}))
     emergency_phone = forms.CharField(label='emergency_phone', max_length = 500, widget=forms.TextInput(attrs={'placeholder': 'Emergency Contact Phone Number'}))
     waiverfiled = forms.BooleanField(label='waiver', required=False)
@@ -42,7 +42,7 @@ class SubmitForm(forms.Form):
         _volunteer_group_list = kwargs.pop('data_list', None)
         super(SubmitForm, self).__init__(*args, **kwargs)
         #print(_volunteer_group_list)
-        self.fields['volunteergroup'].widget= floppyforms.widgets.Input(datalist=ListTextWidget.getDataList())
+        #self.fields['volunteergroup'].widget= floppyforms.widgets.Input(datalist=ListTextWidget.getDataList())
         #self.fields['volunteergroup'].widget = ListTextWidget(data_list=_volunteer_group_list, name='volunteer_group_list')
 
     class Meta:

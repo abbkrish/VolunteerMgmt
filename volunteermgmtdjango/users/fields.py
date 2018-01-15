@@ -1,5 +1,7 @@
 from django import forms
 
+from django.core.exceptions import ValidationError
+
 
 class ListTextWidget(forms.TextInput):
 	def __init__(self, data_list, name, *args, **kwargs):
@@ -40,6 +42,11 @@ class ListTextWidget(forms.TextInput):
 
 		return sorted(volunteer_group_list)
 
+	def get_choices_list():
+		l = [""] + ListTextWidget.getDataList()
+		r = ['Other'] + ListTextWidget.getDataList()
+		return list(zip(l,r))
+
 
 #Another option for DataFields
 class OptionalChoiceWidget(forms.MultiWidget):
@@ -62,5 +69,5 @@ class OptionalChoiceField(forms.MultiValueField):
     def compress(self,data_list):
         """ return the choicefield value if selected or charfield value (if both empty, will throw exception """
         if not data_list:
-            raise ValidationError('Need to select choice or enter text for this field')
+            raise ValidationError('If Other please enter name of group in the text box to the right')
         return data_list[0] or data_list[1]

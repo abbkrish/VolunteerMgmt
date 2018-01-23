@@ -90,9 +90,9 @@ def signup_view(request):
 
 
             if not form.cleaned_data['emergency_phone'].startswith('+1'):
-              new_volunteer.phone_number = '+1{}'.format(form.cleaned_data['emergency_phone'])
+              new_volunteer.emergency_phone = '+1{}'.format(form.cleaned_data['emergency_phone'])
             else:
-              new_volunteer.phone_number = form.cleaned_data['emergency_phone']
+              new_volunteer.emergency_phone = form.cleaned_data['emergency_phone']
 
 
 

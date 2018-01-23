@@ -49,7 +49,7 @@ class User(AbstractUser):
     username = None
     first_name = models.CharField(max_length=200, default = 'NULL')
     last_name = models.CharField(max_length=200, default = 'NULL')
-    email = models.EmailField(primary_key=True, unique=True, default = 'test@test.com')
+    email = models.EmailField(unique=True, default = 'test@test.com')
     street_address_1 = models.CharField(max_length=200, default = 'NULL')
     street_address_2 = models.CharField(max_length=200, default = 'NULL')
     city = models.CharField(max_length=200, default = 'South Orange')

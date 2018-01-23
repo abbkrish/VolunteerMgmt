@@ -24,7 +24,7 @@ class ListTextWidget(forms.TextInput):
 	def getDataList():
 		volunteer_group_list = ('Christ Church in Short Hills', 
 			'Newark Academy', 
-			'Newcommer\'s Short Hills', 
+			'Newcomer\'s Short Hills', 
 			'Worldwide Orphans', 
 			'Investors Savings Bank', 
 			'Summit Medical Group Foundation',
@@ -38,7 +38,7 @@ class ListTextWidget(forms.TextInput):
 			'Arturo\'s',
 			'Temple Sharey Tefilo-Israel',
 			'Congregation Beth El',
-			'Congregation B\'nai Jesurun')
+			'TBJ')
 
 		return sorted(volunteer_group_list)
 

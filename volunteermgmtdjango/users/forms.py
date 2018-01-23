@@ -20,7 +20,7 @@ class SubmitForm(forms.Form):
     last_name = forms.CharField(label='last_name', max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Enter your Last name'}))
     email = forms.EmailField(label='email', widget=forms.TextInput(attrs={'placeholder': 'Enter your Email'}))
     street_addr_1 = forms.CharField(label='addr1', max_length = 500, widget=forms.TextInput(attrs={'placeholder': 'Street Address, PO Box, Company Name'}))
-    street_addr_2 = forms.CharField(label='addr2', max_length = 500, widget=forms.TextInput(attrs={'placeholder': 'Apartment, Unit '}))
+    street_addr_2 = forms.CharField(label='addr2', max_length = 500, widget=forms.TextInput(attrs={'placeholder': 'Apartment, Unit '}), required=False)
     city = forms.CharField(label='city', max_length = 500, widget=forms.TextInput(attrs={'placeholder': 'City'}))
     state = forms.CharField(label='state', max_length = 500, widget=forms.TextInput(attrs={'placeholder': 'State'}))
     zipcode = forms.CharField(label='zipcode', max_length = 100, widget=forms.TextInput(attrs={'placeholder': '5 digit zipcode'}))

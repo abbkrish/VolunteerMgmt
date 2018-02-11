@@ -1,13 +1,36 @@
-{% extends "base.html" %}
+{% extends "layout.html" %}
+
 
 {% block title %}Server Error{% endblock %}
 
 {% block content %}
-<h1>Ooops!!! 500</h1>
 
-<h3>Looks like something went wrong!</h3>
+{% load static %}
 
-<p>We track these errors automatically, but if the problem persists feel free to contact us. In the meantime, try refreshing.</p>
+<head> 
+	    <link href="{% static "css/errors.css" %}" rel="stylesheet">
+        		
+</head>
+
+
+<header>
+<div class="note" style="width:800px; margin:0 auto">
+	 <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <h1>Ooops!!! 500</h1>
+
+								<h3>Looks like something went wrong!</h3>
+
+								<p>We track these errors automatically, but if the problem persists feel free to contact us. In the meantime, try refreshing or going to the home page.</p>
+                            
+                        </div>
+                    </div>
+       </div>
+</div>
+</header>
+
 {% endblock content %}
-
 

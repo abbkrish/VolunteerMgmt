@@ -1,9 +1,36 @@
-{% extends "base.html" %}
+{% extends "layout.html" %}
 
 {% block title %}Forbidden (403){% endblock %}
 
 {% block content %}
-<h1>Forbidden (403)</h1>
 
-<p>CSRF verification failed. Request aborted.</p>
+{% load static %}
+
+
+<head> 
+	    <link href="{% static "css/errors.css" %}" rel="stylesheet">
+        		
+</head>
+
+
+
+
+<header>
+<div class="note" style="width:800px; margin:0 auto">
+	 <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            
+								<h1>Forbidden (403)</h1>
+
+									<p>CSRF verification failed. Request aborted.</p>
+                            
+                        </div>
+                    </div>
+       </div>
+</div>
+</header>
+
 {% endblock content %}

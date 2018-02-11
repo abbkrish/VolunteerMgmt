@@ -121,23 +121,20 @@ def login_view(request):
     else:
         form = LogInForm(request.POST)
         if form.is_valid():
+            user = form.login(request)
+            if user is not None:
+                login(request, user)
+                request.session['email'] = form.cleaned_data['email']
 
-            volunteer = User.objects.get(email=form.cleaned_data['email'])
-            if volunteer.is_staff:
-                try:
-                    user = authenticate(username=form.cleaned_data['email'], password=form.cleaned_data['password'])                
-                except:
-                    return redirect('/403')
-                if user is not None:
-                    login(request, user)
-                    request.session['email'] = form.cleaned_data['email']
+                #to indicate sigin in through sign in
+                request.session['type'] = 'signing in'
+                return HttpResponseRedirect(reverse('staff:volunteer_list'))
+            else:
 
-                    #to indicate sigin in through sign in
-                    request.session['type'] = 'signing in'
-                    return HttpResponseRedirect(reverse('staff:volunteer_list'))
-                else:
-
-                    return render(request, '404.html', {})
+                return render(request, '404.html', {})
+        else:
+            context = {"form": form, 'staff': 'Staff Login'}
+            return render(request, 'staff/staff_login.html', context)
 
         return render(request, reverse('home:home_view'))
 

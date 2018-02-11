@@ -51,7 +51,7 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=200, default = 'NULL')
     email = models.EmailField(unique=True, default = 'test@test.com')
     street_address_1 = models.CharField(max_length=200, default = 'NULL')
-    street_address_2 = models.CharField(max_length=200, default = 'NULL')
+    street_address_2 = models.CharField(max_length=200, default = 'NULL', blank=True)
     city = models.CharField(max_length=200, default = 'South Orange')
     state = models.CharField(max_length=200, default = 'NJ')
     zipcode = models.CharField(max_length=200, default = 'NULL')

@@ -1,9 +1,36 @@
 {% extends "layout.html" %}
 
+
 {% block title %}Page not found{% endblock %}
 
 {% block content %}
-<h1>Page not found</h1>
 
-<p>This is not the page you were looking for.</p>
+{% load static %}
+
+
+
+
+<head> 
+	    <link href="{% static "css/signed_in.css" %}" rel="stylesheet">
+        		
+</head>
+
+
+<header>
+<div class="note" style="width:800px; margin:0 auto">
+	 <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <h1>Page not found</h1>
+
+								<p>This is not the page you were looking for.</p>
+                            
+                        </div>
+                    </div>
+       </div>
+</div>
+</header>
+
 {% endblock content %}

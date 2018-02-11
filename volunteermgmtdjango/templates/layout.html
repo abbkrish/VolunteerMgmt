@@ -120,14 +120,15 @@
             <div class="collapse navbar-collapse" id="navbarExample">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
+                        <a class="nav-link page-scroll" href="{% url 'home:home_view' %}">Home Page</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link page-scroll" href="/{{nav1_href|lower}}">{{nav1}}</a>
                     </li>
                      <li class="nav-item">
                         <a class="nav-link page-scroll" href="/{{nav2_href|lower}}">{{nav2}}</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="{% url 'home:home_view' %}">Home Page</a>
-                    </li>
+                    
                     {% if staff_signed_in %}
                     
                         <li class="nav-item">
@@ -135,6 +136,9 @@
                         </li>
 
                     {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="{% url 'admin:index' %}">Administration</a>
+                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link page-scroll" href="http://www.orangesfoodpantry.org/about_us">About</a>

@@ -52,7 +52,6 @@ def staff_login_view(request):
         
         if form.is_valid():
             user = form.login(request)
-            print("in staff post login view(request):")
             if user is not None:
                 login(request, user)
                 request.session['email'] = form.cleaned_data['email']
@@ -97,7 +96,6 @@ class PostSignIn(TemplateView):
 
 
     def post(self, *args, **kwargs):
-        self.request.session.flush()
         email_key = self.request.POST['data[email]']
         self.request.session['first_name'] = self.request.POST['data[first_name]']
         self.request.session['last_name'] = self.request.POST['data[last_name]']

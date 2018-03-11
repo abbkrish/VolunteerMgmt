@@ -14,12 +14,6 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AddField(
             model_name='user',
-            name='parents_signature',
-            field=models.CharField(default='NULL', max_length=200),
-        ),
-
-        migrations.AddField(
-            model_name='user',
             name='accept_terms',
             field=models.BooleanField(default=True),
             )

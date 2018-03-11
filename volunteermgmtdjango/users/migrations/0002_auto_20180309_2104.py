@@ -16,10 +16,5 @@ class Migration(migrations.Migration):
             model_name='user',
             name='parents_signature',
             field=models.CharField(default='NULL', max_length=200),
-        ),
-        migrations.AlterField(
-            model_name='user',
-            name='street_address_2',
-            field=models.CharField(blank=True, default='NULL', max_length=200),
-        ),
+        )
     ]

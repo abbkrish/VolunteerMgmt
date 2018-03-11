@@ -63,6 +63,8 @@ class User(AbstractUser):
     waiver_filed = models.BooleanField(default = False)
     other = models.CharField(max_length=200, default='NULL')
     password = models.CharField(max_length=200, default = 'NULL')
+    accept_terms = models.BooleanField(default = True)
+    parents_signature = models.CharField(default='NULL', max_length=200)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     is_staff = models.BooleanField(default=False)

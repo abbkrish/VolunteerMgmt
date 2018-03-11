@@ -11,9 +11,12 @@
 <head> 
 
 	    <link href="{% static 'css/signup.css' %}" rel="stylesheet">
+	    <script src="{% static 'js/signup.js' %}"></script>
 
 </head>
-   
+
+	
+
 
   
 
@@ -287,6 +290,35 @@
 
 						
 
+						<!-- Are you a minor -->
+						<div class="form-group col-xs-4 has-error">
+							  <label for="waiver" class="cols-sm-2 control-label">Are you a minor (under 18)?</label>
+							  <div class="cols-md-5" id="minor_div">
+							 	{{form.minor|attr:"class:form-control"}}
+							  </div>
+							  {% if form.minor.errors %}
+            						{% for error in form.minor.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+						</div>
+
+
+						<!-- Parents Signature -->
+						<div class="form-group col-xs-4 has-error hidden" id="parents_signature_div" style="display:none">
+							<label for="parents_signature" class="cols-sm-2 control-label">Parent/Gaurdian Signature (Mandatory if you're under 18)</label>
+							<div class="cols-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-comment fa" aria-hidden="true"></i></span>
+									{{form.parents_signature|attr:"class:form-control"}}
+								</div>
+								{% if form.parents_signature.errors %}
+            						{% for error in form.parents_signature.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
+							</div>	
+						</div>
 
 						
 
@@ -332,6 +364,22 @@
 							<div class="cols-md-5">
 									<p style = "font-size:12px; color: Burlywood;"> By clicking the Submit button, you agree that you have read and accept the terms and conditions listed in the <a href = "{{STATIC_URL}}Release and Waiver.pdf" style = "color:aliceblue;" target="_blank">Waiver Document ( click this link to read the Waiver) </a> </p>
 							</div>
+						</div>
+
+
+
+						<!-- Accept Agreement -->
+						<div class="form-group col-xs-4 has-error">
+
+							  <label for="accept_terms" class="cols-sm-2 control-label" style="font-size:12px;">Check the button below to acknowledge that you have read and accept the terms of the waiver document</label>
+							  <div class="cols-md-5">
+							 	{{form.accept_terms|attr:"class:form-control"}}
+							  </div>
+							  {% if form.accept_terms.errors %}
+            						{% for error in form.accept_terms.errors %}
+              							<p class="error-message">{{ error }}</p>
+            						{% endfor %}
+          						{% endif %}
 						</div>
 
 

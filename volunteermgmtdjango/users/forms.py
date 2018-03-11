@@ -30,9 +30,15 @@ class SubmitForm(forms.Form):
     #volunteergroup = forms.CharField(label='volunteergroup', max_length = 500)
     emergency_name =forms.CharField(label='emergency_name', max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Emergency Contact name'}))
     emergency_phone = forms.CharField(label='emergency_phone', max_length = 500, widget=forms.TextInput(attrs={'placeholder': 'Emergency Contact Phone Number'}))
+    
+
+
     waiverfiled = forms.BooleanField(label='waiver', required=False)
     other = forms.CharField(label='other', max_length = 500, required=False, widget=forms.TextInput(attrs={'placeholder': 'Other'}))
+    minor = forms.BooleanField(label='minor', required=False)
+    parents_signature = forms.CharField(label='parents_signature', max_length = 500, required=False, widget=forms.TextInput(attrs={'placeholder': 'Please input full name in this box'}))
     
+    accept_terms = forms.BooleanField(required=True, label='accept_terms')
     #password = forms.CharField(label='pwd', max_length = 300, widget=forms.PasswordInput(attrs={'placeholder': 'Enter your Password'}), initial = 'NULL')
     #confirm_password = forms.CharField(label = "c_pwd", max_length = 300, widget=forms.PasswordInput(attrs={'placeholder': 'Confirm your Password'}), initial='NULL')
 
@@ -63,6 +69,12 @@ class SubmitForm(forms.Form):
         return password2
 
 
+    def check_minor_certification(self, minor, parents_signature):
+        if (minor == True):
+            if (parents_signature == ''):
+                self.add_error('parents_signature', 'Parents/Gaurdian Signature is mandatory for minors')
+                return False
+        return True
     
     def valid_username(self, email):
         if User.objects.filter(email=email).exists():

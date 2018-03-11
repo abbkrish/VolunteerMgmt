@@ -67,7 +67,7 @@ def signup_view(request):
         
         form = SubmitForm(request.POST, initial={"password":'NULL', "confirm_password": 'NULL'})
         context = {"nav1": "Login", "form": form}
-        if form.is_valid() and form.valid_username(form.cleaned_data['email']):
+        if form.is_valid() and form.valid_username(form.cleaned_data['email']) and form.check_minor_certification(form.cleaned_data['minor'], form.cleaned_data['parents_signature']):
             new_volunteer = User(first_name = form.cleaned_data['first_name'],
                                       last_name = form.cleaned_data['last_name'],
                                       email = form.cleaned_data['email'],
@@ -80,6 +80,8 @@ def signup_view(request):
                                       city = form.cleaned_data['city'],
                                       state = form.cleaned_data['state'],
                                       emergency_name = form.cleaned_data['emergency_name'],
+                                      accept_terms  = form.cleaned_data['accept_terms'],
+                                      parents_signature = form.cleaned_data['parents_signature']
                                       )
             #XXX: removed password hence commented this line 
             #new_volunteer.set_password(form.cleaned_data['password'])

@@ -28,6 +28,7 @@ class ListTextWidget(forms.TextInput):
 			'Worldwide Orphans', 
 			'Investors Savings Bank', 
 			'Summit Medical Group Foundation',
+			'Freewalkers',
 			'Winston School',
 			'JAG Physical Therapy',
 			'Seton Hall Nursing Students', 
@@ -69,5 +70,5 @@ class OptionalChoiceField(forms.MultiValueField):
     def compress(self,data_list):
         """ return the choicefield value if selected or charfield value (if both empty, will throw exception """
         if not data_list:
-            raise ValidationError('If Other please enter name of group in the text box to the right')
+            raise ValidationError('If Other, please enter how you heard of the food pantry in the text box to the right')
         return data_list[0] or data_list[1]

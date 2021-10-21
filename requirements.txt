@@ -5,7 +5,7 @@ appnope==0.1.0
 argon2-cffi==16.3.0
 awesome-slugify==1.6.5
 boto==2.48.0
-Babel==2.4.0
+Babel==2.9.1
 billiard==3.3.0.23
 celery==3.1.25
 certifi==2017.4.17
